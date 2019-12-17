@@ -1,0 +1,29 @@
+{
+    "name": "sussy",
+    "description": "css framework",
+    "version": "0.0.1",
+    "files": [
+        "css/**/*.scss",
+        "svelte.config.js"
+    ],
+    "scripts": {
+        "dev": "sapper dev",
+        "build": "sapper build",
+        "export": "sapper export",
+        "start": "node __sapper__/build"
+    },
+    "dependencies": {
+        "polka": "next",
+        "sirv": "^0.4.0"
+    },
+    "devDependencies": {
+        "css-loader": "^3.3.2",
+        "mini-css-extract-plugin": "^0.8.0",
+        "node-sass": "^4.13.0",
+        "sapper": "^0.27.0",
+        "sass-loader": "^8.0.0",
+        "svelte": "^3.0.0",
+        "svelte-loader-hot": "https://github.com/rixo/svelte-loader",
+        "webpack": "^4.7.0"
+    }
+}
