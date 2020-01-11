@@ -4,7 +4,7 @@ Utility-based css framework in scss
 
 ## Cheatsheet
 
-### basic
+### Basis
 
 #### base units
 
@@ -77,7 +77,11 @@ $-screen-names: ps, pm, pl, ts, tm, tl, cs, cm, cl;
 // NOTE: $min, $max == null meaning bare @content
 ```
 
-### boder-radius
+### Commons
+
+Define common patterns and utilities classes
+
+#### boder-radius
 
 <!-- prettier-ignore -->
 ```scss

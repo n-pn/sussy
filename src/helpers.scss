@@ -6,41 +6,41 @@ $-configs: disable-feature(utils);
 @import 'basis/location-util';
 @import 'basis/media-queries';
 
-@import 'essence/background-colors';
-@import 'essence/background-gradients';
-@import 'essence/border-colors';
-@import 'essence/border-radius';
-@import 'essence/border-styles';
-@import 'essence/border-widths';
-@import 'essence/borders';
+@import 'common/background-colors';
+@import 'common/background-gradients';
+@import 'common/border-colors';
+@import 'common/border-radius';
+@import 'common/border-styles';
+@import 'common/border-widths';
+@import 'common/borders';
 
-@import 'essence/box-margins';
-@import 'essence/box-paddings';
-@import 'essence/box-shadows';
-@import 'essence/box-sizes';
+@import 'common/box-margins';
+@import 'common/box-paddings';
+@import 'common/box-shadows';
+@import 'common/box-sizes';
 
-@import 'essence/display-float';
-@import 'essence/display-flex';
-@import 'essence/display-grid';
+@import 'common/display-float';
+@import 'common/display-flex';
+@import 'common/display-grid';
 
-@import 'essence/font-families';
-@import 'essence/font-sizes';
-@import 'essence/font-styles';
-@import 'essence/font-variants';
-@import 'essence/font-weights';
+@import 'common/font-families';
+@import 'common/font-sizes';
+@import 'common/font-styles';
+@import 'common/font-variants';
+@import 'common/font-weights';
 
-@import 'essence/image-fluid';
-@import 'essence/image-retina';
+@import 'common/image-fluid';
+@import 'common/image-retina';
 
-@import 'essence/media-hovers';
-@import 'essence/misc-cursors';
+@import 'common/media-hovers';
+@import 'common/misc-cursors';
 
-@import 'essence/outline-colors';
-@import 'essence/outline-styles';
-@import 'essence/outline-widths';
+@import 'common/outline-colors';
+@import 'common/outline-styles';
+@import 'common/outline-widths';
 
-@import 'essence/reset-links';
-@import 'essence/reset-lists';
+@import 'common/reset-links';
+@import 'common/reset-lists';
 
-@import 'essence/text-colors';
-@import 'essence/text-truncate';
+@import 'common/text-colors';
+@import 'common/text-truncate';
