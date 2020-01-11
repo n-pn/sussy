@@ -1,7 +1,7 @@
 $-util-classes: false !default;
 
 @import 'basis/base-alias';
-@import 'basis/base-funcs';
+@import 'basis/base-functs';
 @import 'basis/base-colors';
 @import 'basis/base-hovers';
 @import 'basis/base-screens';
@@ -13,6 +13,7 @@ $-util-classes: false !default;
 @import 'basis/border-radius';
 @import 'basis/border-styles';
 @import 'basis/border-widths';
+@import 'basis/borders';
 
 @import 'basis/box-margins';
 @import 'basis/box-paddings';

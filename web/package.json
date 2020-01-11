@@ -1,11 +1,8 @@
 {
-    "name": "sussy",
-    "description": "css framework",
+    "name": "@nipin/mould-web",
+    "description": "site for mould package",
     "version": "0.0.1",
-    "files": [
-        "css/**/*.scss",
-        "svelte.config.js"
-    ],
+    "private": true,
     "scripts": {
         "dev": "sapper dev",
         "build": "sapper build",

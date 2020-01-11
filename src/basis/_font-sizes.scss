@@ -1,12 +1,15 @@
 // font sizes
 
-$-font-xs: 0.75rem !default;
-$-font-sm: 0.875rem !default;
-$-font-md: 1rem !default;
-$-font-lg: 1.125rem !default;
-$-font-xl: 1.25rem !default;
-$-font-x2: 1.5rem !default;
-$-font-x3: 1.875rem !default;
-$-font-x4: 2.25rem !default;
-$-font-x5: 3rem !default;
-$-font-x6: 4rem !default;
+$-font-size-ss: 0.75rem !default;
+$-font-size-sm: 0.875rem !default;
+$-font-size-md: 1rem !default;
+$-font-size-lg: 1.125rem !default;
+$-font-size-x1: 1.25rem !default;
+$-font-size-x2: 1.5rem !default;
+$-font-size-x3: 1.875rem !default;
+$-font-size-x4: 2.25rem !default;
+$-font-size-x5: 3rem !default;
+$-font-size-x6: 4rem !default;
+
+@mixin font-size($size) {
+}

@@ -1,6 +1,6 @@
 import * as sapper from '@sapper/app'
-import '../css/global.scss'
+import '../../src/global.scss'
 
 sapper.start({
-  target: document.querySelector('#sapper'),
+    target: document.querySelector('#sapper'),
 })

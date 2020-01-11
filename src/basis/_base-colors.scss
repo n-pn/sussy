@@ -133,7 +133,7 @@ $-color-aliases: (
     harmful: red,
 ) !default;
 
-$-color-names: map-keys($color-palette), map-keys($-color-aliases);
+$-color-names: map-keys($-color-palette), map-keys($-color-aliases);
 @debug $-color-names;
 
 // functions
