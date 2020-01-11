@@ -1,4 +1,4 @@
-# Mould
+# Molds
 
 Utility-based css framework in scss
 
