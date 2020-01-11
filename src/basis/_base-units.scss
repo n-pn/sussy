@@ -1,12 +1,12 @@
-$-unit-size: 16px !default;
-$-unit-cell: 0.25rem !default;
+$-base-size: 16px !default;
+$-base-cell: 0.25rem !default;
 
 // convert px to em
-@function em($size, $unit: 16) {
-    @if unit($size) != unit($unit) {
-        @error "type mismatch: '#{$size}' & '#{$unit}'";
+@function em($size, $base: 16) {
+    @if unit($size) != unit($base) {
+        @error "type mismatch: '#{$size}' & '#{$base}'";
     }
-    @return $size / $unit * 1em;
+    @return $size / $base * 1em;
 }
 
 // convert px to rem
@@ -17,13 +17,13 @@ $-unit-cell: 0.25rem !default;
         @error "unsupported unit";
     }
 
-    @return $size / $-unit-size * 1rem;
+    @return $size / $-base-size * 1rem;
 }
 
 // maintain vertical rhythm
 @function dot($size: 1) {
     // prettier-ignore
-    @if unitless($size) { @return $size * $-unit-cell; }
+    @if unitless($size) { @return $size * $-base-cell; }
     @error "only allow unitless";
 }
 
