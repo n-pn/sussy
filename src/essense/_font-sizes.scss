@@ -1,15 +1,22 @@
 // font sizes
 
-$-font-size-ss: 0.75rem !default;
-$-font-size-sm: 0.875rem !default;
-$-font-size-md: 1rem !default;
-$-font-size-lg: 1.125rem !default;
-$-font-size-x1: 1.25rem !default;
-$-font-size-x2: 1.5rem !default;
-$-font-size-x3: 1.875rem !default;
-$-font-size-x4: 2.25rem !default;
-$-font-size-x5: 3rem !default;
-$-font-size-x6: 4rem !default;
+$-font-sizes: (
+    ss: 0.75rem,
+    sm: 0.875rem,
+    md: 1rem,
+    lg: 1.125rem,
+    x1: 1.25rem,
+    x2: 1.5rem,
+    x3: 1.875rem,
+    x4: 2.25rem,
+    x5: 3rem,
+    x6: 4rem,
+) !default;
+
+@function font-size($size) {
+    @return map-get($-font-sizes, $size);
+}
 
 @mixin font-size($size) {
+    font-size: font-size($size);
 }

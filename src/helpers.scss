@@ -1,10 +1,9 @@
 $-util-classes: false !default;
 
-@import 'basis/alias';
-@import 'basis/functs';
-@import 'basis/colors';
-@import 'basis/hovers';
-@import 'basis/screens';
+@import 'basis/base-units';
+@import 'basis/color-pallete';
+@import 'basis/location-util';
+@import 'basis/media-queries';
 
 @import 'essence/background-colors';
 @import 'essence/background-gradients';
@@ -33,6 +32,7 @@ $-util-classes: false !default;
 @import 'essence/image-fluid';
 @import 'essence/image-retina';
 
+@import 'essense/media-hovers';
 @import 'essence/misc-cursors';
 
 @import 'essence/outline-colors';

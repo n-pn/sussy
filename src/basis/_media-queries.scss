@@ -40,72 +40,60 @@ $-screen-names: map-keys($-screen-sizes);
 
 // mixins
 
-/// media query for screen min
-@mixin screen-width-min($min: 4) {
-    @if $min == null {
-        @content;
-    } @else {
+/// media query for screen min width
+// prettier-ignore
+@mixin screen-width-min($min: ts) { // default is small tablet
+    @if $min == null { @content; }
+    @else {
         $size-min: screen-size($min);
-        // prettier-ignore
         @media screen and (min-width: $size-min) { @content; }
     }
 }
 
-/// media query for screen max
-@mixin screen-width-max($max: 6) {
-    @if $min == null {
-        @content;
-    } @else {
+/// media query for screen max width
+// prettier-ignore
+@mixin screen-width-max($max: cs) { // default is large tablet
+    @if $max == null { @content; }
+    @else {
         $size-max: screen-size($max) - 1px;
-        // prettier-ignore
         @media screen and (max-width: $size-max) { @content; }
     }
 }
 
-/// media query for screen from min to max
-@mixin screen-width-range($min, $max) {
-    @if $min == null {
+/// media query for screen from min width to max width
+@mixin screen-width-range($min: ts, $max: cs) {
+    $size-min: screen-size($min);
+    $size-max: screen-size($max) - 1px;
+    @media screen and (min-width: $size-min) and (max-width: $size-max) {
         @content;
-    } @else {
-        $size-min: screen-size($min);
-        $size-max: screen-size($max) - 1px;
-        @media screen and (min-width: $size-min) and (max-width: $size-max) {
-            @content;
-        }
     }
 }
 
-/// media query for screen min-height
-@mixin screen-height-min($min: ts) {
-    @if $min == null {
-        @content;
-    } @else {
+/// media query for screen min height
+// prettier-ignore
+@mixin screen-height-min($min: ts) { // default is small tablet
+    @if $min == null { @content; }
+    @else {
         $size-min: screen-size($min);
-        // prettier-ignore
-        @media screen and (min-width: $size-min) { @content; }
+        @media screen and (min-height: $size-min) { @content; }
     }
 }
 
-/// media query for screen max
-@mixin screen-height-max($max: tl) {
-    @if $min == null {
-        @content;
-    } @else {
+/// media query for screen max height
+// prettier-ignore
+@mixin screen-height-max($max: cs) { // default is large tablet
+    @if $max == null { @content; }
+    @else {
         $size-max: screen-size($max) - 1px;
-        // prettier-ignore
-        @media screen and (max-width: $size-max) { @content; }
+        @media screen and (max-height: $size-max) { @content; }
     }
 }
 
-/// media query for screen from min to max
-@mixin screen-height-range($min, $max) {
-    @if $min == null {
+/// media query for screen from min to max height
+@mixin screen-height-range($min: ts, $max: cs) {
+    $size-min: screen-size($min);
+    $size-max: screen-size($max) - 1px;
+    @media screen and (min-height: $size-min) and (max-height: $size-max) {
         @content;
-    } @else {
-        $size-min: screen-size($min);
-        $size-max: screen-size($max) - 1px;
-        @media screen and (min-width: $size-min) and (max-width: $size-max) {
-            @content;
-        }
     }
 }

@@ -1,7 +1,7 @@
 // variables
-$-radius-dirs: a, t, l, b, r, tl, tr, bl, br; // a means all
-$-radius-sizes: 0, 1, 2, 4, 6, 8, 10, 12, 16, 24, 32, 64 !default;
-$-radius-size-df: 2 !default;
+$-radius-locs: $-loc-edges, $-loc-corners;
+$-radius-sizes: 0, 1, 2, 4, 6, 8, 10, 12, 16, 24, 32 !default;
+$-radius-size-df: 4 !default;
 
 // return border radiuses
 @function radius-size($size: 2) {
@@ -21,37 +21,34 @@ $-radius-size-df: 2 !default;
     @return rem($size);
 }
 
-@mixin border-radius($size: $-radius-size-df, $dir: a) {
+@mixin border-radius($loc: a, $size: $-radius-size-df) {
     $bdr: radius-size($size);
 
-    // prettier-ignore
-    @if $dir == a { border-radius: $bdr; }
-    // prettier-ignore
-    @if $dir == t or $dir == l or $dir == tl { border-top-left-radius: $bdr; }
-    // prettier-ignore
-    @if $dir == t or $dir == r or $dir == tr { border-top-right-radius: $bdr; }
-    // prettier-ignore
-    @if $dir == b or $dir == l or $dir == bl { border-bottom-left-radius: $bdr; }
-    // prettier-ignore
-    @if $dir == b or $dir == r or $dir == br { border-bottom-right-radius: $bdr; }
+    @if $loc == a {
+        border-radius: $bdr;
+    }
+
+    @each $corner in $-loc-corner {
+        @if loc-akin($loc, $corner) {
+            border-#{$loc-full($loc)}-radius: $bdr;
+        }
+    }
 }
 
 @if $-util-classes {
-    // prettier-ignore
-    .__bdr { @include border-radius(); }
-
-    @each $dir in $-radius-dirs {
-        // prettier-ignore
-        .__bdr-#{$dir} { @include border-radius($-radius-size-df, $dir); }
+    .__bdr {
+        @include border-radius();
     }
 
-    @each $size in $-radius-sizes {
-        // prettier-ignore
-        .__bdr-#{$size} { @include border-radius($size); }
+    @each $loc in $-radius-locs {
+        .__bdr-#{$loc} {
+            @include border-radius($loc);
+        }
 
-        @each $dir in $-radius-dirs {
-            // prettier-ignore
-            .__bdr-#{$size}-#{$dir} { @include border-radius($size, $dir); }
+        @each $size in $-radius-sizes {
+            .__bdr-#{$loc}-#{$size} {
+                @include border-radius($loc, $size);
+            }
         }
     }
 }
