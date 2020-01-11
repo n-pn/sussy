@@ -74,14 +74,27 @@ $-screen-names: ps, pm, pl, ts, tm, tl, cs, cm, cl;
 @mixin screen-height-min($min: ts) {} // media screen + min-height
 @mixin screen-height-max($max: cs) {} // media screen + max-height
 @mixin screen-height-range($min, $max) {}
-// NOTE: $min, $max == null meaning bare @content
+// NOTE: $min, $max == null meaning @content without media query
 ```
 
 ### Commons
 
 Define common patterns and utilities classes
 
-#### boder-radius
+#### border-colors
+
+<!-- prettier-ignore -->
+```scss
+// helpers
+@mixin border-color($name: neutral, $tone: 7) {}
+
+// classes
+.__bdc {}
+.__bdc-#{$name} {}
+.__bdc-#{$name}-#{$tone} {}
+```
+
+#### border-radiuses
 
 <!-- prettier-ignore -->
 ```scss

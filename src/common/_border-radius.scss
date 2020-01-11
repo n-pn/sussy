@@ -24,7 +24,7 @@ $-radius-size-df: 4 !default;
 @mixin border-radius($loc: x, $size: $-radius-size-df) {
     $bdr: radius-size($size);
 
-    @if $loc == x {
+    @if $loc == x or $loc == null {
         border-radius: $bdr;
     }
 
