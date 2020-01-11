@@ -1,0 +1,21 @@
+// set text color
+@mixin bgcolor($name: neutral, $tone: 2) {
+    background-color: color($name, $tone);
+}
+
+@if $-util-classes {
+    @each $name in (none, white, black) {
+        // prettier-ignore
+        .__bgc#{$name} { @include bgcolor($name); }
+    }
+
+    @each $name in $-color-names {
+        // prettier-ignore
+        .__bgc-#{$name} { @include bgcolor($name); }
+
+        @for $tone from 1 to 9 {
+            // prettier-ignore
+            .__bgc-#{$name}-#{$tone} { @include bgcolor($name, $tone); }
+        }
+    }
+}
