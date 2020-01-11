@@ -14,7 +14,7 @@ $-button-default-style: solid !default;
     @include height($size);
     @include font-size($font-size);
 
-    &.-icon {
+    &._icon {
         width: $size;
     }
 }
@@ -48,22 +48,22 @@ $-button-default-style: solid !default;
 
 @mixin button-color($color: neutral) {
     &,
-    &.-fill,
-    &.-rise {
+    &._fill,
+    &._rise {
         @include -button-fill-color($color);
     }
 
-    &.-line {
+    &._line {
         @include -button-line-color($color);
     }
 
-    &.-text {
+    &._text {
         @include button-color-text($color);
     }
 }
 
-@if $-object-classes {
-    .m-button {
+@if include(objects) {
+    .--button {
         display: inline-block;
         text-transform: uppercase;
         font-weight: 500;
@@ -74,46 +74,46 @@ $-button-default-style: solid !default;
 
 // button sizes
 
-.m-button {
-    &.-tiny {
+.--button {
+    &._tiny {
         @include -button-size(1.25rem, xs);
     }
 
-    &.-small {
+    &._small {
         @include -button-size(1.5rem, sx);
     }
 
     &,
-    &.-medium {
+    &._medium {
         @include -button-size(2rem, sm);
     }
 
-    &.-large {
+    &._large {
         @include -button-size(2.5rem, md);
     }
 
-    &.-huge {
+    &._huge {
         @include -button-size(3rem, lg);
     }
 }
 
 // button widths
 
-.m-button {
+.--button {
     &,
-    &.-normal {
+    &._normal {
         padding: 0 1em;
     }
 
-    &.-narrow {
+    &._narrow {
         padding: 0 0.5em;
     }
 
-    &.-widely {
+    &._widely {
         padding: 0 1.5em;
     }
 
-    &.-block {
+    &._block {
         display: block;
         width: 100%;
     }
@@ -121,24 +121,24 @@ $-button-default-style: solid !default;
 
 // button styles
 
-.m-button {
-    &.-icon {
+.--button {
+    &._icon {
         @include border-radius(9999px);
         padding: 0;
     }
 
-    &.-rise {
+    &._rise {
         // @include shadow(md);
         box-shadow: 0 3px 6px rgba(#000, 0.1), 0 1px 2px rgba(#000, 0.2);
     }
 
     &,
-    &.-default {
+    &._default {
         @include button-color(neutral);
 
         &,
-        &.-fill,
-        &.-rise {
+        &._fill,
+        &._rise {
             @include color(neutral, 7);
             @include bgcolor(neutral, 2);
             @include hover {
@@ -148,59 +148,59 @@ $-button-default-style: solid !default;
         }
     }
 
-    &.-primary {
+    &._primary {
         @include button-color(primary);
     }
 
-    &.-success {
+    &._success {
         @include button-color(success);
     }
 
-    &.-harmful {
+    &._harmful {
         @include button-color(harmful);
     }
 
-    &.-gray {
+    &._gray {
         @include button-color(gray);
     }
 
-    &.-red {
+    &._red {
         @include button-color(red);
     }
 
-    &.-orange {
+    &._orange {
         @include button-color(orange);
     }
 
-    &.-yellow {
+    &._yellow {
         @include button-color(yellow);
     }
 
-    &.-green {
+    &._green {
         @include button-color(green);
     }
 
-    &.-teal {
+    &._teal {
         @include button-color(teal);
     }
 
-    &.-blue {
+    &._blue {
         @include button-color(blue);
     }
 
-    &.-indigo {
+    &._indigo {
         @include button-color(indigo);
     }
 
-    &.-purple {
+    &._purple {
         @include button-color(purple);
     }
 
-    &.-pink {
+    &._pink {
         @include button-color(pink);
     }
 
-    &.-disable,
+    &._disable,
     &[disabled] {
         @include color(neutral, 5);
         @include bgcolor(neutral, 2);

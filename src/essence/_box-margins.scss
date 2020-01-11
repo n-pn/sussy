@@ -31,7 +31,7 @@ $-margin-directions: a, t, b, l, r, tb, lr !default;
 // util classes
 
 /// define multiple mixins
-@if $-util-classes {
+@if include(utils) {
     @each $size in $-margin-sizes {
         .__mg-#{$size} {
             @include margin($size);

@@ -28,14 +28,14 @@ $-radius-size-df: 4 !default;
         border-radius: $bdr;
     }
 
-    @each $corner in $-loc-corner {
+    @each $corner in $-loc-corners {
         @if loc-akin($loc, $corner) {
             border-#{$loc-full($loc)}-radius: $bdr;
         }
     }
 }
 
-@if $-util-classes {
+@if include(utils) {
     .__bdr {
         @include border-radius();
     }

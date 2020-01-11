@@ -30,7 +30,7 @@ $-padding-directions: t, b, l, r, tb, lr !default;
 
 // util classes
 
-@if $-util-classes {
+@if include(utils) {
     @each $size in $-padding-sizes {
         .__pd-#{$size} {
             @include padding($size);

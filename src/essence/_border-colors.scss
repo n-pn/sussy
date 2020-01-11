@@ -3,7 +3,7 @@
     border-color: color($name, $tone);
 }
 
-@if $-util-classes {
+@if include(utils) {
     @each $name in (none, white, black) {
         .__bdc#{$name} {
             @include border-color($name);

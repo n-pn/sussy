@@ -7,7 +7,7 @@
     }
 }
 
-@if $-util-classes {
+@if include(utils) {
     .__cf {
         @include cf;
     }

@@ -134,7 +134,6 @@ $-color-aliases: (
 ) !default;
 
 $-color-names: map-keys($-color-palette), map-keys($-color-aliases);
-@debug $-color-names;
 
 // functions
 
@@ -163,6 +162,6 @@ $-color-names: map-keys($-color-palette), map-keys($-color-aliases);
         $tone: 5;
     }
 
-    $tones: map-get($-color-palette, $color);
+    $tones: map-get($-color-palette, $name);
     @return map-get($tones, $tone);
 }

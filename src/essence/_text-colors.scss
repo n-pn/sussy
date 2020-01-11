@@ -3,7 +3,7 @@
     color: color($name, $tone);
 }
 
-@if $-util-classes {
+@if include(utils) {
     @each $name in (-none, -white, -black) {
         .__tc#{$name} {
             color: color($name);

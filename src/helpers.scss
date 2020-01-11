@@ -1,13 +1,13 @@
-$-util-classes: false !default;
+@import 'config';
+$-configs: disable-feature(utils);
 
 @import 'basis/base-units';
-@import 'basis/color-pallete';
+@import 'basis/color-palette';
 @import 'basis/location-util';
 @import 'basis/media-queries';
 
 @import 'essence/background-colors';
 @import 'essence/background-gradients';
-
 @import 'essence/border-colors';
 @import 'essence/border-radius';
 @import 'essence/border-styles';
@@ -32,7 +32,7 @@ $-util-classes: false !default;
 @import 'essence/image-fluid';
 @import 'essence/image-retina';
 
-@import 'essense/media-hovers';
+@import 'essence/media-hovers';
 @import 'essence/misc-cursors';
 
 @import 'essence/outline-colors';

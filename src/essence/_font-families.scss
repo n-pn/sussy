@@ -48,7 +48,7 @@ $-font-names: map-keys($-font-families);
 
 // utils
 
-@if $-util-classes {
+@if include(utils) {
     @each $name in $-font-names {
         .__ff-#{$name} {
             @include font-family($name);

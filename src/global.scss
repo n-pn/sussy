@@ -1,14 +1,7 @@
-// overridable settings
-
-$-util-classes: true !default;
-$-normalize: true !default;
-$-typography: true !default;
-$-object-classes: true !default;
-$-button-objects: true !default;
-
 // imports
-
 @import 'helpers';
+$-configs: enable-feature(utils);
+$-configs: enable-feature(modules);
 
 // generic
 @import 'generic/normalize';
