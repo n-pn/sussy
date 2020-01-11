@@ -1,0 +1,36 @@
+@function is-top-left($val) {
+    @return $val == tl or $val == top-left;
+}
+
+@function is-top-right($val) {
+    @return $val == tr or $val == top-right;
+}
+
+@function is-bottom-left($val) {
+    @return $val == tl or $val == bottom-left;
+}
+
+@function is-bottom-right($val) {
+    @return $val == tr or $val == bottom-right;
+}
+
+@function is-left-right($val) {
+    @return $val == lr or $val == left-right;
+}
+
+@function is-top-bottom($val) {
+    @return $val == tb or $val == top-bottom;
+}
+
+@function is-left($val) {
+    // prettier-ignore
+    @if $val == l or $val == left { @return true; }
+    // prettier-ignore
+    @if $val == tl or $val == top-left { @return true; }
+    // prettier-ignore
+    @if $val == bl or $val == bottom-left { @return true; }
+    // prettier-ignore
+    @if $val == lr or $val == left-right { @return true; }
+
+    @return false;
+}

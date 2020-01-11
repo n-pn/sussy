@@ -1,0 +1,20 @@
+// clearfix
+@mixin cf {
+    &:after {
+        display: block;
+        content: ' ';
+        clear: both;
+    }
+}
+
+@if $-util-classes {
+    .__cf {
+        @include cf;
+    }
+    .__fl {
+        float: left;
+    }
+    .__fr {
+        float: right;
+    }
+}

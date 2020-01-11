@@ -1,0 +1,53 @@
+// variables
+$-radius-dirs: a, t, l, b, r, tl, tr, bl, br; // a means all
+$-radius-sizes: 0, 1, 2, 4, 6, 8, 10, 12, 16, 24, 32, 64 !default;
+$-radius-size-df: 2 !default;
+
+// return border radiuses
+@function radius-size($size: 2) {
+    @if not unitless($size) {
+        @warn "using custom radius size (#{$size}) is not recommended";
+        @return $size;
+    }
+
+    @if not list-index($-radius-sizes, $size) {
+        @warn "using custom radius size (#{$size}) is not recommended";
+    }
+
+    @return rem($size);
+}
+
+@mixin border-radius($size: $-radius-size-df, $dir: a) {
+    $bdr: radius-size($size);
+
+    // prettier-ignore
+    @if $dir == a { border-radius: $bdr; }
+    // prettier-ignore
+    @if $dir == t or $dir == -l or $dir == tl { border-top-left-radius: $bdr; }
+    // prettier-ignore
+    @if $dir == t or $dir == -r or $dir == tr { border-top-right-radius: $bdr; }
+    // prettier-ignore
+    @if $dir == b or $dir == l or $dir == bl { border-bottom-left-radius: $bdr; }
+    // prettier-ignore
+    @if $dir == b or $dir == r or $dir == br { border-bottom-right-radius: $bdr; }
+}
+
+@if $-util-classes {
+    // prettier-ignore
+    .__bdr { @include border-radius(); }
+
+    @each $dir in $-bdr-dirs {
+        // prettier-ignore
+        .__bdr-#{$dir} { @include border-radius($dir); }
+    }
+
+    @each $size in $-bdr-sizes {
+        // prettier-ignore
+        .__bdr-#{$size} { @include border-radius($size); }
+
+        @each $dir in $-bdr-dirs {
+            // prettier-ignore
+            .__bdr-#{$size}-#{$dir} { @include border-radius($size, $dir); }
+        }
+    }
+}
