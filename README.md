@@ -35,7 +35,7 @@ $-color-aliases: (
     harmful: red,
 ) !default;
 
-@function color($name, $tone: 5) { }
+@function color($name, $tone: 5) { } // $name == none => transparent
 ```
 
 #### location util
@@ -68,27 +68,30 @@ $-screen-names: ps, pm, pl, ts, tm, tl, cs, cm, cl;
 
 @function screen-size($name) {} // $name can also be a custom number
 
-@mixin screen-width-min($min) {} // media screen + min-width
-@mixin screen-width-max($max) {}// media screen + max-width
+@mixin screen-width-min($min: ts) {} // media screen + min-width
+@mixin screen-width-max($max: cs) {}// media screen + max-width
 @mixin screen-width-range($min, $max) {}
-@mixin screen-height-min($min) {} // media screen + min-height
-@mixin screen-height-max($max) {} // media screen + max-height
+@mixin screen-height-min($min: ts) {} // media screen + min-height
+@mixin screen-height-max($max: cs) {} // media screen + max-height
 @mixin screen-height-range($min, $max) {}
+// NOTE: $min, $max == null meaning bare @content
 ```
 
 ### boder-radius
 
+<!-- prettier-ignore -->
 ```scss
-// variables
-$-radius-dirs: a, t, l, b, r, tl, tr, bl, br; // a means all
-$-radius-sizes: 0, 1, 2, 4, 6, 8, 10, 12, 16, 24, 32, 64 !default;
-$-radius-size-df: 2 !default;
+// configs
+$-radius-locs: t, l, b, r, tl, tr, bl, br;
+$-radius-sizes: 0, 1, 2, 4, 6, 8, 10, 12, 16, 24, 32 !default;
+$-radius-size-df: 4 !default;
 
-// @function radius-size($size: 2) // custom $size value (not on $-radius-size) will raise a warning message
-// @mixin border-radius($size: $-bdr-size-df, $dir: a) // $dir in $-radius-dirs
+// helpers
+@function radius-size($size: $-radius-size-df) {}
+@mixin border-radius($loc: x, $size: $-radius-size-df) // `x` mean all 4 corners
 
-// .__bdr
-// .__bdr-#{$dir}
-// .__bdr-#{$dir}-#{$size}
-// .__bdr-#{$dir}-#{$size}-#{$screen}
+// classes
+.__bdr {}
+.__bdr-#{$loc} {}
+.__bdr-#{$loc}-#{$size} {}
 ```

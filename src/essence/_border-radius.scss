@@ -4,7 +4,7 @@ $-radius-sizes: 0, 1, 2, 4, 6, 8, 10, 12, 16, 24, 32 !default;
 $-radius-size-df: 4 !default;
 
 // return border radiuses
-@function radius-size($size: 2) {
+@function radius-size($size: $-radius-size-df) {
     @if type-of($size) != number {
         @error "type-of $size (#{$size}) must be number, got #{type-of($size)}";
     }
@@ -21,10 +21,10 @@ $-radius-size-df: 4 !default;
     @return rem($size);
 }
 
-@mixin border-radius($loc: a, $size: $-radius-size-df) {
+@mixin border-radius($loc: x, $size: $-radius-size-df) {
     $bdr: radius-size($size);
 
-    @if $loc == a {
+    @if $loc == x {
         border-radius: $bdr;
     }
 
