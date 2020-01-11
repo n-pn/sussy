@@ -1,0 +1,33 @@
+// configs
+
+$-border-style-map: (
+    n: none,
+    i: inset,
+    h: hidden,
+    s: solid,
+    db: double,
+    dt: dotted,
+    ds: dashed,
+) !default;
+$-border-style-keys: map-keys($-border-style-map);
+
+$-border-style-df: s !default;
+
+// helpers
+// prettier-ignore
+@function border-style($key) {
+    $val: map-get($-border-style-map, $key);
+    @return $val or $key;
+}
+
+@mixin border-style($key: $-border-style-df) {
+    border-style: border-style($key);
+}
+
+@if include(utils) {
+    @each $key in $-border-style-keys {
+        .__bds-#{$key} {
+            @include border-style($key);
+        }
+    }
+}
