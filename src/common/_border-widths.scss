@@ -1,0 +1,30 @@
+$-border-width-locs: t, l, b, r, tb, lr !default;
+$-border-width-sizes: 0, 1, 2, 4 !default;
+
+@mixin border-width($size: 1, $loc: x) {
+    $width: if(unitless($size), rem($size), $size);
+
+    @if $loc == x or $loc == a {
+        border-width: $width;
+    }
+
+    @each $edge in $-loc-edges {
+        @if loc-alike($edge, $loc) {
+            border-#{loc-full($edge)}-width: $width;
+        }
+    }
+}
+
+@if feature(utils) {
+    @each $size in $-border-width-sizes {
+        .__bdw-#{$size} {
+            @include border-width($size);
+        }
+
+        @each $loc in $-border-width-locs {
+            .__bdw-#{$size}-#{$loc} {
+                @include border-width($size, $loc);
+            }
+        }
+    }
+}

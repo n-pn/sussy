@@ -132,3 +132,43 @@ $-radius-size-df: 4 !default;
 .__bdr-#{$loc} { @include border-radius($loc); }
 .__bdr-#{$loc}-#{$size} { @include border-radius($loc, $size); }
 ```
+
+#### border-styles
+
+<!-- prettier-ignore -->
+```scss
+// configs
+$-border-style-map: (
+    n: none,
+    i: inset,
+    h: hidden,
+    s: solid,
+    db: double,
+    dt: dotted,
+    ds: dashed,
+) !default;
+$-border-style-df: s !default;
+
+// helpers
+@function border-style($key) {}
+@mixin border-style($key: $-border-style-df) {}
+
+// classes
+.__bds-#{$key} { @include border-style($key); }
+```
+
+#### border-widths
+
+<!-- prettier-ignore -->
+```scss
+// configs
+$-border-width-locs: t, l, b, r, tb, lr !default;
+$-border-width-sizes: 0, 1, 2, 4 !default;
+
+// helpers
+@mixin border-widht($size: 1, $loc: a) {}
+
+// classes
+.__bds-#{$size} { @include border-width($size); }
+.__bds-#{$size}-#{$loc} { @include border-width($size, $loc); }
+```

@@ -2,7 +2,10 @@ $-base-size: 16px !default;
 $-base-cell: 0.25rem !default;
 
 // convert px to em
+// prettier-ignore
 @function em($size, $base: 16) {
+    @if $size == 0 { @return 0; }
+
     @if unit($size) != unit($base) {
         @error "type mismatch: '#{$size}' & '#{$base}'";
     }
@@ -10,7 +13,10 @@ $-base-cell: 0.25rem !default;
 }
 
 // convert px to rem
+// prettier-ignore
 @function rem($size) {
+    @if $size == 0 { @return 0; }
+
     @if unitless($size) {
         $size: $size * 1px;
     } @else if unit($size) != px {

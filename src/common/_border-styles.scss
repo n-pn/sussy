@@ -14,7 +14,7 @@ $-border-style-keys: map-keys($-border-style-map);
 $-border-style-df: s !default;
 
 // helpers
-// prettier-ignore
+
 @function border-style($key) {
     $val: map-get($-border-style-map, $key);
     @return $val or $key;
@@ -23,6 +23,8 @@ $-border-style-df: s !default;
 @mixin border-style($key: $-border-style-df) {
     border-style: border-style($key);
 }
+
+// classes
 
 @if include(utils) {
     @each $key in $-border-style-keys {
