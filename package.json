@@ -1,7 +1,9 @@
 {
     "name": "@nipin/molds",
+    "author": "Nipinium",
     "description": "utility-base css framework in scss",
     "version": "0.0.1",
+    "license": "MIT",
     "files": [
         "src"
     ]

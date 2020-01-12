@@ -5,7 +5,7 @@
 
 @if include(utils) {
     @each $name in (none, white, black) {
-        .__bdc#{$name} {
+        .__bdc-#{$name} {
             @include border-color($name);
         }
     }

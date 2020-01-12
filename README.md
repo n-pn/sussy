@@ -81,6 +81,21 @@ $-screen-names: ps, pm, pl, ts, tm, tl, cs, cm, cl;
 
 Define common patterns and utilities classes
 
+#### background-colors
+
+<!-- prettier-ignore -->
+```scss
+$-bgc-name-df: neutral !default;
+$-bgc-tone-df: 2 !default;
+
+@mixin bgcolor($name: $-bgc-name-df, $tone: $bgc-tone-df) {}
+
+// $name in (none, white, black, $-color-names)
+// $tone in (1..9), only apply on $-color-names
+.__bgc-#{$name} {}
+.__bgc-#{$name}-#{$tone} {}
+```
+
 #### border-colors
 
 <!-- prettier-ignore -->
@@ -89,9 +104,10 @@ Define common patterns and utilities classes
 @mixin border-color($name: neutral, $tone: 7) {}
 
 // classes
-.__bdc {}
-.__bdc-#{$name} {}
-.__bdc-#{$name}-#{$tone} {}
+
+.__bdc { @include border-color(); }
+.__bdc-#{$name} { @include border-color($name); }
+.__bdc-#{$name}-#{$tone} { @include border-color($name, $tone); }
 ```
 
 #### border-radiuses
@@ -99,16 +115,20 @@ Define common patterns and utilities classes
 <!-- prettier-ignore -->
 ```scss
 // configs
+
 $-radius-locs: t, l, b, r, tl, tr, bl, br;
 $-radius-sizes: 0, 1, 2, 4, 6, 8, 10, 12, 16, 24, 32 !default;
 $-radius-size-df: 4 !default;
 
 // helpers
+
 @function radius-size($size: $-radius-size-df) {}
-@mixin border-radius($loc: x, $size: $-radius-size-df) // `x` mean all 4 corners
+// `x` or `a` mean all four corners
+@mixin border-radius($loc: x, $size: $-radius-size-df) {}
 
 // classes
-.__bdr {}
-.__bdr-#{$loc} {}
-.__bdr-#{$loc}-#{$size} {}
+
+.__bdr { @include border-radius(); }
+.__bdr-#{$loc} { @include border-radius($loc); }
+.__bdr-#{$loc}-#{$size} { @include border-radius($loc, $size); }
 ```

@@ -10,7 +10,7 @@ $-bgc-tone-df: 2 !default;
 // prettier-ignore
 @if include(utils) {
     @each $name in (none, white, black) {
-        .__bgc#{$name} { @include bgcolor($name); }
+        .__bgc-#{$name} { @include bgcolor($name); }
     }
 
     @each $name in $-color-names {
