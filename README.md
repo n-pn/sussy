@@ -23,11 +23,13 @@ $-base-cell: 0.25rem !default;
 
 <!-- prettier-ignore -->
 ```scss
-$-color-names: gray, red, orange, yellow, green, teal, blue, indigo, purple,
-    pink;
-$-color-tones: 1, 2, 3, 4, 5, 6, 7, 8, 9;
+// color with no tone: none, white, black,
+// color with tones: gray, red, orange, yellow, green, teal, blue, indigo, purple, pink
+// color tones: 1, 2, 3, 4, 5, 6, 7, 8, 9;
 
-$-color-aliases: (
+$-color-pallete: (none, white, black, gray: (...), red: (...), ...);
+
+$-color-mapping: (
     neutral: gray,
     primary: blue,
     success: green,
@@ -35,7 +37,7 @@ $-color-aliases: (
     harmful: red,
 ) !default;
 
-@function color($name, $tone: 5) { } // $name == none => transparent
+@function color($name, $tone: 5) { }
 ```
 
 #### location util
