@@ -166,9 +166,28 @@ $-border-width-locs: t, l, b, r, tb, lr !default;
 $-border-width-sizes: 0, 1, 2, 4 !default;
 
 // helpers
-@mixin border-widht($size: 1, $loc: a) {}
+@mixin border-width($size: 1, $loc: a) {}
 
 // classes
 .__bds-#{$size} { @include border-width($size); }
 .__bds-#{$size}-#{$loc} { @include border-width($size, $loc); }
+```
+
+#### borders
+
+<!-- prettier-ignore -->
+```scss
+// configs
+$-border-locs: t, l, b, r !default;
+$-border-widths: 0, 1, 2, 3, 4 !default;
+$-border-width-df: 1px !default;
+$-border-color-df: color(neutral, 7) !default;
+
+// helpers
+@mixin border($loc: x, $width: $-border-width-df) {}
+
+// classes
+.__bd-#{$loc} { @include border($loc); }
+.__bd-#{$width} { @include border($width); }
+.__bd-#{$width}-#{$loc} { @include border($width, $loc); }
 ```

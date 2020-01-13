@@ -1,33 +1,40 @@
-// borders
+// configs
 
-@mixin bdcolor($color: gray, $tone: 3) {
-    border-color: color($color, $tone);
-}
+$-border-locs: t, l, b, r !default;
+$-border-widths: 0, 1, 2, 3, 4 !default;
+$-border-width-df: 1px !default;
+$-border-color-df: color(neutral, 7) !default;
 
-@mixin bdwidth($width: 1px) {
-    @if $width == 0 or $width == 2 or $width == 4 or $width == 8 {
-        border-width: rem($width);
-    } @else {
-        border-width: $width;
+// helpers
+
+// prettier-ignore
+@mixin border($width: $-border-width-df, $loc: x) {
+
+    $border: $width solid $-border-color-df;
+    @if ($width == 0) { $border: 0 }
+
+    @if $loc == x or $loc == a { border: $border; }
+
+    @each $l in $-border-locs {
+        @if $loc == $l { border-#{loc-full($loc)}: $border; }
     }
 }
 
-@mixin border($color, $width: 1px) {
-    border: $width solid $color;
-}
+// classes
 
-@mixin border-left($color, $width: 1px) {
-    border-left: $width solid $color;
-}
+// prettier-ignore
+@if include(utils) {
+    .__bd { @include border(); }
 
-@mixin border-right($color, $width: 1px) {
-    border-right: $width solid $color;
-}
+    @each $width in $-border-widths {
+        .__bd-#{$width} { @include border($width) }
+    }
 
-@mixin border-top($color, $width: 1px) {
-    border-top: $width solid $color;
-}
+    @each $loc in $-border-locs {
+        .__bd-#{$loc} { @include border(x, $loc); }
 
-@mixin border-bottom($color, $width: 1px) {
-    border-bottom: $width solid $color;
+        @each $width in $-border-widths {
+            .__bd-#{$loc}-#{$width} { @include border($loc, $width) }
+        }
+    }
 }

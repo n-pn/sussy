@@ -3,6 +3,8 @@
     border-color: color($name, $tone);
 }
 
+// classes
+
 @if include(utils) {
     @each $name in (none, white, black) {
         .__bdc-#{$name} {

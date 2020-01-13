@@ -31,7 +31,7 @@ $-button-default-style: solid !default;
 @mixin -button-line-color($color) {
     background: transparent;
     @include color($color, 6);
-    @include bdcolor($color, 4);
+    @include border-color($color, 4);
 
     @include hover() {
         @include bgcolor($color, 2);

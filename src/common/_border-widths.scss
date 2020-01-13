@@ -1,5 +1,5 @@
 $-border-width-locs: t, l, b, r, tb, lr !default;
-$-border-width-sizes: 0, 1, 2, 4 !default;
+$-border-width-sizes: 0, 1, 2, 3, 4 !default;
 
 @mixin border-width($size: 1, $loc: x) {
     $width: if(unitless($size), rem($size), $size);
