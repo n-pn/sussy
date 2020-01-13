@@ -1,22 +1,61 @@
 // configs
+$-border-sides: $-edges, $-flanks !default;
+$-border-widths: 0, 1px, 2px, 3px, 4px !default;
+// prettier-ignore
+$-border-styles: ( none: n, inset: i, hidden: h, solid: s,
+                   double: db, dotted: dt, dashed: ds, ) !default;
 
-$-border-locs: t, l, b, r !default;
-$-border-widths: 0, 1, 2, 3, 4 !default;
 $-border-width-df: 1px !default;
+$-border-style-df: solid !default;
 $-border-color-df: color(neutral, 7) !default;
 
 // helpers
+@mixin border-color($side: all, $color: $-border-color-df) {
+    // prettier-ignore
+    @if $side == all { border-color: $color; }
+    @each $edge in $-edges {
+        @if side-match($edge, $side) {
+            border-#{$edge}-color: $color;
+        }
+    }
+}
+@mixin border-style($side: all, $style: $-border-style-df) {
+    // prettier-ignore
+    @if $side == all { border-style: $style; }
+    @each $edge in $-edges {
+        @if side-match($edge, $side) {
+            border-#{$edge}-style: $width;
+        }
+    }
+}
+@mixin border-width($side: all, $width: $-border-width-df) {
+    // prettier-ignore
+    @if $side == all { border-width: $width; }
+    @each $edge in $-edges {
+        @if side-match($edge, $side) {
+            border-#{$edge}-width: $width;
+        }
+    }
+}
+@mixin border(
+    $side: all,
+    $width: $-border-width-df,
+    $color: $-border-color-df,
+    $style: $-border-style-df
+) {
+    @if ($width == 0) {
+        border: 0;
+    } @else {
+        $border: $width $-border-style-df $color;
 
-// prettier-ignore
-@mixin border($width: $-border-width-df, $loc: x) {
+        // prettier-ignore
+        @if $side == all { border: $border; }
 
-    $border: $width solid $-border-color-df;
-    @if ($width == 0) { $border: 0 }
-
-    @if $loc == x or $loc == a { border: $border; }
-
-    @each $l in $-border-locs {
-        @if $loc == $l { border-#{loc-full($loc)}: $border; }
+        @each $edge in $-edges {
+            @if side-match($side, $edge) {
+                border-#{$side}: $border;
+            }
+        }
     }
 }
 
@@ -26,15 +65,28 @@ $-border-color-df: color(neutral, 7) !default;
 @if include(utils) {
     .__bd { @include border(); }
 
+    // all
     @each $width in $-border-widths {
         .__bd-#{$width} { @include border($width) }
     }
+    // styles
+    @each $style, $class in $-border-styles {
+        .__bds-#{$class} { @include border-style($style); }
+    }
 
-    @each $loc in $-border-locs {
-        .__bd-#{$loc} { @include border(x, $loc); }
+    @each $side in $-border-sides {
+        .__bd-#{$side} { @include border($-border-width-df, $side); }
 
         @each $width in $-border-widths {
-            .__bd-#{$loc}-#{$width} { @include border($loc, $width) }
+            $class: strip-unit($width);
+            .__bd-#{$side}-#{$class} { @include border($side, $width) }
+        }
+
+        // styles
+        @each $style, $class in $-border-styles {
+            .__bds-#{$side}-#{$class} { @include border-style($style); }
         }
     }
+
+
 }

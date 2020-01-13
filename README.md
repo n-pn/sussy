@@ -98,81 +98,22 @@ $-bgc-tone-df: 2 !default;
 .__bgc-#{$name}-#{$tone} {}
 ```
 
-#### border-colors
-
-<!-- prettier-ignore -->
-```scss
-// helpers
-@mixin border-color($name: neutral, $tone: 7) {}
-
-// classes
-
-.__bdc { @include border-color(); }
-.__bdc-#{$name} { @include border-color($name); }
-.__bdc-#{$name}-#{$tone} { @include border-color($name, $tone); }
-```
-
 #### border-radiuses
 
 <!-- prettier-ignore -->
 ```scss
 // configs
-
-$-radius-pos: top, left, bottom, right, top-left, top-right, bottom-left, bottom-right !default;
+$-raduius-sides: top, left, bottom, right, top-left, top-right, bottom-left, bottom-right !default;
 $-radius-sizes: 0, 1, 2, 4, 6, 8, 10, 12, 16, 24, 32 !default;
 $-radius-size-df: 4 !default;
 
 // helpers
-
-@function radius-size($size: $-radius-size-df) {}
-// `x` or `a` mean all four corners
-@mixin border-radius($pos: all, $size: $-radius-size-df) {}
+@mixin border-radius($side: all, $radius: $-radius-size-df) {}
 
 // classes
-
 .__bdr { @include border-radius(); }
-.__bdr-#{$pos} { @include border-radius($pos); }
-.__bdr-#{$pos}-#{$size} { @include border-radius($pos, $size); }
-```
-
-#### border-styles
-
-<!-- prettier-ignore -->
-```scss
-// configs
-$-border-style-map: (
-    n: none,
-    i: inset,
-    h: hidden,
-    s: solid,
-    db: double,
-    dt: dotted,
-    ds: dashed,
-) !default;
-$-border-style-df: s !default;
-
-// helpers
-@function border-style($key) {}
-@mixin border-style($key: $-border-style-df) {}
-
-// classes
-.__bds-#{$key} { @include border-style($key); }
-```
-
-#### border-widths
-
-<!-- prettier-ignore -->
-```scss
-// configs
-$-border-width-locs: t, l, b, r, tb, lr !default;
-$-border-width-sizes: 0, 1, 2, 4 !default;
-
-// helpers
-@mixin border-width($size: 1, $loc: a) {}
-
-// classes
-.__bds-#{$size} { @include border-width($size); }
-.__bds-#{$size}-#{$loc} { @include border-width($size, $loc); }
+.__bdr-#{$side} { @include border-radius($side); }
+.__bdr-#{$side}-#{$radius} { @include border-radius($side, $radius); }
 ```
 
 #### borders
@@ -180,18 +121,24 @@ $-border-width-sizes: 0, 1, 2, 4 !default;
 <!-- prettier-ignore -->
 ```scss
 // configs
-$-border-locs: t, l, b, r !default;
-$-border-widths: 0, 1, 2, 3, 4 !default;
+$-border-sides: top, left, bottom, right, top-bottom, left-right !default;
+$-border-widths: 0, 1px, 2px, 3px, 4px !default;
+$-border-styles: ( none: n, inset: i, hidden: h, solid: s,
+                   double: db, dotted: dt, dashed: ds, ) !default;
 $-border-width-df: 1px !default;
+$-border-style-df: solid !default;
 $-border-color-df: color(neutral, 7) !default;
 
 // helpers
-@mixin border($loc: x, $width: $-border-width-df) {}
+@mixin border-color($side: all, $color: $-border-color-df) {}
+@mixin border($side: all, $width: 1px, $color: gray, $style: solid) {}
 
 // classes
-.__bd-#{$loc} { @include border($loc); }
+.__bd-#{$side} { @include border($side); }
 .__bd-#{$width} { @include border($width); }
-.__bd-#{$width}-#{$loc} { @include border($width, $loc); }
+.__bd-#{$side}-#{$width} { @include border($width, $side); }
+.__bds-#{$side} { @include border-style($side, solid); }
+.__bds-#{$side}-#{$style} { @include border-style($side, $style); }
 ```
 
 #### margins

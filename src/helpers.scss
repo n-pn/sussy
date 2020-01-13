@@ -8,10 +8,8 @@ $-configs: disable-feature(utils);
 
 @import 'common/background-colors';
 @import 'common/background-gradients';
-@import 'common/border-colors';
-@import 'common/border-radius';
-@import 'common/border-styles';
-@import 'common/border-widths';
+
+@import 'common/border-radiuses';
 @import 'common/borders';
 
 @import 'common/box-margins';

@@ -123,6 +123,8 @@ $-color-mapping: (
     harmful: red,
 ) !default;
 
+$-color-names: map-keys($-color-palette);
+
 // functions
 
 /// get color by name and tone
