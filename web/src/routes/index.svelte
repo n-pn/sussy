@@ -1,46 +1,36 @@
-<style>
-	h1, figure, p {
-		text-align: center;
-		margin: 0 auto;
-	}
+<style lang="scss">
+  h1,
+  p {
+    text-align: center;
+    margin: 0 auto;
+  }
 
-	h1 {
-		font-size: 2.8em;
-		text-transform: uppercase;
-		font-weight: 700;
-		margin: 0 0 0.5em 0;
-	}
+  h1 {
+    font-size: 2.8em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin: 0 0 0.5em 0;
 
-	figure {
-		margin: 0 0 1em 0;
-	}
+    @include screen-width-min(pl) {
+      font-size: 4em;
+    }
+  }
 
-	img {
-		width: 100%;
-		max-width: 400px;
-		margin: 0 0 1em 0;
-	}
-
-	p {
-		margin: 1em auto;
-	}
-
-	@media (min-width: 480px) {
-		h1 {
-			font-size: 4em;
-		}
-	}
+  p {
+    margin: 1em auto;
+  }
 </style>
 
 <svelte:head>
-	<title>Sapper project template</title>
+  <title>Sapper project template</title>
 </svelte:head>
 
-<h1>Great success!</h1>
+<div class="__bs-5 __bgc-gray2 __rd __p-4-b">
+  <h1>Great success!</h1>
 
-<figure>
-	<img alt='Borat' src='great-success.png'>
-	<figcaption>HIGH FIVE!</figcaption>
-</figure>
-
-<p><strong>Try editing this file (src/routes/index.svelte) to test live reloading.</strong></p>
+  <p>
+    <strong>
+      Try editing this file (src/routes/index.svelte) to test live reloading.
+    </strong>
+  </p>
+</div>

@@ -1,33 +1,33 @@
 /// configs
+$-gutter-sizes: (0, 1bs, 2bs, 3bs, 4bs, 5bs, 6bs) !default;
 $-gutter-sides: join($-edges, $-flanks) !default;
-$-gutter-sizes: 0, 1bs, 2bs, 3bs, 4bs, 5bs, 6bs !default;
 
 // helpers
 @mixin margin($size, $side: all, $screen: null) {
     $gutter: rem($size);
 
-    @if $side == all {
+    @include screen-min($screen) {
         // prettier-ignore
-        @include screen-width-min($screen) { margin: $gutter; }
-    }
-
-    @each $edge in $-edges {
-        @if side-match($side, $edge) {
-            margin-#{$edge}: $gutter;
+        @if $side == all { margin: $gutter; }
+        @each $edge in $-edges {
+            // prettier-ignore
+            @if side-match($side, $edge) { margin-#{$edge}: $gutter; }
         }
     }
 }
+
 @mixin padding($size, $side: all, $screen: null) {
     $gutter: rem($size);
 
     @if $side == all {
         // prettier-ignore
-        @include screen-width-min($screen) { padding: $gutter; }
+        @include screen-min($screen) { padding: $gutter; }
     }
 
     @each $edge in $-edges {
         @if side-match($side, $edge) {
-            padding-#{$edge}: $gutter;
+            // prettier-ignore
+            @include screen-min($screen) { padding-#{$edge}: $gutter; }
         }
     }
 }
@@ -36,21 +36,25 @@ $-gutter-sizes: 0, 1bs, 2bs, 3bs, 4bs, 5bs, 6bs !default;
 @if include(utils) {
     // prettier-ignore
     @each $size in $-gutter-sizes {
-        .__m-#{$size} { @include margin($size); }
-        .__p-#{$size} { @include padding($size); }
+        $base: strip-unit($size);
+
+        .__m-#{$base} { @include margin($size); }
+        .__p-#{$base} { @include padding($size); }
 
         @each $side in $-gutter-sides {
-            .__m-#{$size}-#{$side} { @include margin($size, $side); }
-            .__p-#{$size}-#{$side} { @include padding($size, $side); }
+            $attr: side-abbr($side);
+
+            .__m-#{$base}-#{$attr} { @include margin($size, $side); }
+            .__p-#{$base}-#{$attr} { @include padding($size, $side); }
 
             @each $screen in $-screen-names {
-                .__m-#{$size}-#{side}-#{$screen} {
-                    @include screen-width-min($screen) {
+                .__m-#{$base}-#{$attr}-#{$screen} {
+                    @include screen-min($screen) {
                         @include margin($size, $side);
                     }
                 }
-                .__p-#{$size}-#{side}-#{$screen} {
-                    @include screen-width-min($screen) {
+                .__p-#{$base}-#{$attr}-#{$screen} {
+                    @include screen-min($screen) {
                         @include padding($size, $side);
                     }
                 }

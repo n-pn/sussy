@@ -1,5 +1,5 @@
 // configs
-$-border-sides: $-edges, $-flanks !default;
+$-border-sides: join($-edges, $-flanks) !default;
 $-border-widths: 0, 1px, 2px, 3px, 4px !default;
 // prettier-ignore
 $-border-styles: ( none: n, inset: i, hidden: h, solid: s,
@@ -67,7 +67,7 @@ $-border-color-df: color(neutral, 7) !default;
     // all
     @each $width in $-border-widths {
         // prettier-ignore
-        .__bd-#{$width} { @include border(all, $width); }
+        .__bd-#{strip-unit($width)} { @include border(all, $width); }
     }
     // styles
     @each $style, $class in $-border-styles {
@@ -76,19 +76,13 @@ $-border-color-df: color(neutral, 7) !default;
     }
 
     @each $side in $-border-sides {
+        $class: side-abbr($side);
         // prettier-ignore
-        .__bd-#{$side} { @include border($side); }
+        .__bd-#{$class} { @include border($side); }
 
         @each $width in $-border-widths {
-            .__bd-#{$side}-#{strip-unit($width)} {
+            .__bd-#{$class}-#{strip-unit($width)} {
                 @include border($side, $width);
-            }
-        }
-
-        // styles
-        @each $style, $class in $-border-styles {
-            .__bds-#{$side}-#{$class} {
-                @include border-style($style);
             }
         }
     }

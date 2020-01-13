@@ -1,0 +1,43 @@
+// configs
+$-radius-sides: join($-edges, $-corners) !default;
+$-radius-sizes: (
+    0: 0,
+    1: 2px,
+    2: 4px,
+    3: 8px,
+    x: 1000px,
+) !default;
+$-radius-size-df: 4px !default;
+
+// helpers
+@mixin border-radius($side: all, $radius: $-radius-size-df) {
+    @if $side == all {
+        border-radius: $radius;
+    } @else {
+        @each $corner in $-corners {
+            @if side-match($corner, $side) {
+                border-#{$corner}-radius: $radius;
+            }
+        }
+    }
+}
+
+// classes
+// prettier-ignore
+@if include(utils) {
+    .__rd { @include border-radius(all, $-radius-size-df); }
+
+    @each $key, $val in $-radius-sizes {
+        .__rd-#{$key} { @include border-radius(all, $val); }
+    }
+
+    @each $side in $-radius-sides {
+        $abbr: side-abbr($side);
+
+        .__rd-#{$abbr} { @include border-radius($side, $-radius-size-df); }
+
+        @each $key, $val in $-radius-sizes {
+            .__rd-#{$abbr}#{$key} { @include border-radius($side, $val); }
+        }
+    }
+}

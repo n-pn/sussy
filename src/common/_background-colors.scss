@@ -1,5 +1,5 @@
 // configs
-$-bgc-name-df: gray !default;
+$-bgc-name-df: neutral !default;
 $-bgc-tone-df: 2 !default;
 
 // helpers
@@ -8,17 +8,17 @@ $-bgc-tone-df: 2 !default;
 }
 
 @if include(utils) {
-    @each $name in map-keys($-color-palette) {
-        @each $name in (none, white, black) {
-            // prettier-ignore
-            .__bgc-#{$name} { @include bgcolor($name); }
-        }
+    @each $name in (none, white, black) {
+        // prettier-ignore
+        .__bg-#{$name} { @include bgcolor($name); }
+    }
 
-        .__bgc-#{$name} {
+    @each $name in map-keys($-color-palette) {
+        .__bg-#{$name} {
             @include bgcolor($name);
         }
-        @for $tone from 1 to 9 {
-            .__bgc-#{$name}-#{$tone} {
+        @for $tone from 1 to 10 {
+            .__bg-#{$name}#{$tone} {
                 @include bgcolor($name, $tone);
             }
         }
