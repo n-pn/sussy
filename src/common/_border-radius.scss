@@ -1,6 +1,6 @@
 // variables
-$-radius-locs: $-loc-edges, $-loc-corners;
-$-radius-sizes: 0, 1, 2, 4, 6, 8, 10, 12, 16, 24, 32 !default;
+$-radius-pos: $-position-edges, $-position-corners !default;
+$-radius-sizes: 0, 1, 2, 3, 4, 6, 8 !default;
 $-radius-size-df: 4 !default;
 
 // return border radiuses
@@ -21,17 +21,14 @@ $-radius-size-df: 4 !default;
     @return rem($size);
 }
 
-@mixin border-radius($loc: x, $size: $-radius-size-df) {
-    $bdr: radius-size($size);
+// prettier-ignore
+@mixin border-radius($pos: all, $size: $-radius-size-df) {
+    $radius: radius-size($size);
 
-    @if $loc == x or $loc == null {
-        border-radius: $bdr;
-    }
+    @if $pos == all { border-radius: $radius; }
 
-    @each $corner in $-loc-corners {
-        @if loc-akin($loc, $corner) {
-            border-#{$loc-full($loc)}-radius: $bdr;
-        }
+    @each $corner in $-pos-corners {
+        @if pos-akin($pos, $corner) { border-#{$corner}-radius: $radius; }
     }
 }
 
@@ -40,14 +37,15 @@ $-radius-size-df: 4 !default;
         @include border-radius();
     }
 
-    @each $loc in $-radius-locs {
-        .__bdr-#{$loc} {
-            @include border-radius($loc);
+    @each $pos in $-radius-poss {
+        $class: pos-abbr($pos);
+        .__bdr-#{$class} {
+            @include border-radius($pos);
         }
 
         @each $size in $-radius-sizes {
-            .__bdr-#{$loc}-#{$size} {
-                @include border-radius($loc, $size);
+            .__bdr-#{$class}-#{$size} {
+                @include border-radius($pos, $size);
             }
         }
     }

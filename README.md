@@ -118,7 +118,7 @@ $-bgc-tone-df: 2 !default;
 ```scss
 // configs
 
-$-radius-locs: t, l, b, r, tl, tr, bl, br;
+$-radius-pos: top, left, bottom, right, top-left, top-right, bottom-left, bottom-right !default;
 $-radius-sizes: 0, 1, 2, 4, 6, 8, 10, 12, 16, 24, 32 !default;
 $-radius-size-df: 4 !default;
 
@@ -126,13 +126,13 @@ $-radius-size-df: 4 !default;
 
 @function radius-size($size: $-radius-size-df) {}
 // `x` or `a` mean all four corners
-@mixin border-radius($loc: x, $size: $-radius-size-df) {}
+@mixin border-radius($pos: all, $size: $-radius-size-df) {}
 
 // classes
 
 .__bdr { @include border-radius(); }
-.__bdr-#{$loc} { @include border-radius($loc); }
-.__bdr-#{$loc}-#{$size} { @include border-radius($loc, $size); }
+.__bdr-#{$pos} { @include border-radius($pos); }
+.__bdr-#{$pos}-#{$size} { @include border-radius($pos, $size); }
 ```
 
 #### border-styles

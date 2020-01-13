@@ -1,0 +1,40 @@
+$-position-edges: top, bottom, left, right;
+$-position-flanks: top-bottom, left-right;
+$-position-corners: top-left, top-right, bottom-left, bottom-right;
+
+$-position-abbrs: (
+    top: t,
+    bottom: b,
+    left: l,
+    right: r,
+    top-left: tl,
+    top-right: tr,
+    top-bottom: tb,
+    bottom-left: bl,
+    bottom-right: br,
+    left-right: lr,
+);
+
+// prettier-ignore
+@function pos-abbr($pos) {
+    $abbr: map-get($-position-abbrs, $pos);
+    @if $abbr { @return $abbr; }
+
+    @error "unknown postition named '#{$pos}'";
+}
+
+// prettier-ignore
+@function pos-match($pos1, $pos2) {
+    @if $pos1 == $pos2 { @return true; }
+    @if $pos1 == top-left { @return $pos2 == top or $pos2 == left; }
+    @if $pos1 == top-right { @return $pos2 == top or $pos2 == right; }
+    @if $pos1 == bottom-left { @return $pos2 == bottom or $pos2 == left; }
+    @if $pos1 == bottom-right { @return $pos2 == bottom or $pos2 = right; }
+    @if $pos1 == top-bottom { @return $pos2 == top or $pos2 == bottom; }
+    @if $pos1 == left-right { @return $pos2 == left or $pos2 == right; }
+
+    @return pos-match($pos2, $pos1);
+}
+
+// @debug pos-match(top-left, left);
+// @debug pos-match(left, left-right);

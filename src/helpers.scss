@@ -1,10 +1,10 @@
 @import 'config';
 $-configs: disable-feature(utils);
 
-@import 'basis/base-units';
 @import 'basis/color-palette';
-@import 'basis/location-util';
 @import 'basis/media-queries';
+@import 'basis/position-utils';
+@import 'basis/unit-utilities';
 
 @import 'common/background-colors';
 @import 'common/background-gradients';
