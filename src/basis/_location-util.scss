@@ -30,3 +30,7 @@ $-loc-fulls: (
     @if $loc1 == r { @return $loc2 == tr or $loc2 == br or $loc2 == lr; }
     @return false;
 }
+
+@function loc-all($loc) {
+    @return $loc == x or $loc == a or $loc == all;
+}

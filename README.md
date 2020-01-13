@@ -191,3 +191,21 @@ $-border-color-df: color(neutral, 7) !default;
 .__bd-#{$width} { @include border($width); }
 .__bd-#{$width}-#{$loc} { @include border($width, $loc); }
 ```
+
+#### margins
+
+<!-- prettier-ignore -->
+```scss
+// configs
+$-margin-sizes: 0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24, 32, 40, 48, 58, 64 !default;
+$-margin-locs: a, t, b, l, r, tb, lr !default;
+
+
+// helpers
+@mixin border($loc: x, $width: $-border-width-df) {}
+
+// classes
+.__bd-#{$loc} { @include border($loc); }
+.__bd-#{$width} { @include border($width); }
+.__bd-#{$width}-#{$loc} { @include border($width, $loc); }
+```

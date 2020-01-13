@@ -1,29 +1,21 @@
-/// variables
+/// configs
 
 $-margin-sizes: 0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24, 32, 40, 48, 58, 64 !default;
-$-margin-directions: a, t, b, l, r, tb, lr !default;
+$-margin-locs: t, b, l, r, tb, lr !default;
 
-// mixins
+// helpers
 
-@mixin margin($size, $dir: a, $screen: null) {
-    @if $dir == top or $dir == t or $dir == tb or $dir == a {
+@mixin margin($cell, $loc: a, $screen: null) {
+    $size: size($cell);
+    @if loc-all($loc) {
         @include screen-width-min($screen) {
-            margin-top: size($size);
+            margin: $size;
         }
     }
-    @if $dir == bottom or $dir == b or $dir == tb or $dir == a {
-        @include screen-width-min($screen) {
-            margin-bottom: size($size);
-        }
-    }
-    @if $dir == left or $dir == l or $dir == lr or $dir == a {
-        @include screen-width-min($screen) {
-            margin-left: size($size);
-        }
-    }
-    @if $dir == right or $dir == r or $dir == lr or $dir == a {
-        @include screen-width-min($screen) {
-            margin-right: size($size);
+
+    @each $side in $-loc-sides {
+        @if loc-akin($size, $loc) {
+            margin-#{loc-full($loc)}: $size;
         }
     }
 }
@@ -37,15 +29,15 @@ $-margin-directions: a, t, b, l, r, tb, lr !default;
             @include margin($size);
         }
 
-        @each $dir in $-margin-directions {
-            .__mg-#{$size}-#{$dir} {
-                @include margin($size, $dir);
+        @each $loc in $-margin-locs {
+            .__mg-#{$size}-#{$loc} {
+                @include margin($size, $loc);
             }
 
             @each $screen in $-screen-names {
-                .__mg-#{$size}-#{$dir}-#{$screen} {
+                .__mg-#{$size}-#{$loc}-#{$screen} {
                     @include screen-width-min($screen) {
-                        @include margin($size, $dir);
+                        @include margin($size, $loc);
                     }
                 }
             }
