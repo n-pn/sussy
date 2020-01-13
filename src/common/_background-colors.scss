@@ -1,23 +1,26 @@
-// set text color
-
-$-bgc-name-df: neutral !default;
+// configs
+$-bgc-name-df: gray !default;
 $-bgc-tone-df: 2 !default;
 
-@mixin bgcolor($name: $-bgc-name-df, $tone: $bgc-tone-df) {
+// helpers
+@mixin bgcolor($name: $-bgc-name-df, $tone: $-bgc-tone-df) {
     background-color: color($name, $tone);
 }
 
-// prettier-ignore
 @if include(utils) {
-
     @each $name in map-keys($-color-palette) {
-        .__bgc-#{$name} { @include bgcolor($name); }
-
-        @if not index(none white black, $name) {
-            @for $tone from 1 to 9 {
-                .__bgc-#{$name}-#{$tone} { @include bgcolor($name, $tone); }
-            }
+        @each $name in (none, white, black) {
+            // prettier-ignore
+            .__bgc-#{$name} { @include bgcolor($name); }
         }
 
+        .__bgc-#{$name} {
+            @include bgcolor($name);
+        }
+        @for $tone from 1 to 9 {
+            .__bgc-#{$name}-#{$tone} {
+                @include bgcolor($name, $tone);
+            }
+        }
     }
 }

@@ -1,0 +1,60 @@
+/// configs
+$-gutter-sides: join($-edges, $-flanks) !default;
+$-gutter-sizes: 0, 1bs, 2bs, 3bs, 4bs, 5bs, 6bs !default;
+
+// helpers
+@mixin margin($size, $side: all, $screen: null) {
+    $gutter: rem($size);
+
+    @if $side == all {
+        // prettier-ignore
+        @include screen-width-min($screen) { margin: $gutter; }
+    }
+
+    @each $edge in $-edges {
+        @if side-match($side, $edge) {
+            margin-#{$edge}: $gutter;
+        }
+    }
+}
+@mixin padding($size, $side: all, $screen: null) {
+    $gutter: rem($size);
+
+    @if $side == all {
+        // prettier-ignore
+        @include screen-width-min($screen) { padding: $gutter; }
+    }
+
+    @each $edge in $-edges {
+        @if side-match($side, $edge) {
+            padding-#{$edge}: $gutter;
+        }
+    }
+}
+
+// classes
+@if include(utils) {
+    // prettier-ignore
+    @each $size in $-gutter-sizes {
+        .__m-#{$size} { @include margin($size); }
+        .__p-#{$size} { @include padding($size); }
+
+        @each $side in $-gutter-sides {
+            .__m-#{$size}-#{$side} { @include margin($size, $side); }
+            .__p-#{$size}-#{$side} { @include padding($size, $side); }
+
+            @each $screen in $-screen-names {
+                .__m-#{$size}-#{side}-#{$screen} {
+                    @include screen-width-min($screen) {
+                        @include margin($size, $side);
+                    }
+                }
+                .__p-#{$size}-#{side}-#{$screen} {
+                    @include screen-width-min($screen) {
+                        @include padding($size, $side);
+                    }
+                }
+            }
+        }
+    }
+}

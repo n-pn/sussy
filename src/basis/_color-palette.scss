@@ -1,8 +1,5 @@
 /// color palette
 $-color-palette: (
-    none: tranparent,
-    white: #fff,
-    black: #000,
     gray: (
         #f7fafc,
         #edf2f7,
@@ -128,8 +125,15 @@ $-color-names: map-keys($-color-palette);
 // functions
 
 /// get color by name and tone
+// prettier-ignore
 @function color($name, $tone: 5) {
-    $name: map-get($-color-mapping, $name) or $name;
+    @if $name == none { @return transparent; }
+    @if $name == white { @return #fff; }
+    @if $name == black { @return #000; }
+
+    @if map-has-key($-color-mapping, $name) {
+        $name: map-get($-color-mapping, $name);
+    }
     $color: map-get($-color-palette, $name);
 
     @if not $color {
@@ -138,10 +142,6 @@ $-color-names: map-keys($-color-palette);
             @return $color;
         }
         @error "'#{$name}' is not a valid color";
-    }
-
-    @if type-of($color) == color {
-        @return $color;
     }
 
     @if type-of($tone) != number {

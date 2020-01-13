@@ -1,5 +1,5 @@
 // configs
-$-radius-sides: $-edges, $-corners !default;
+$-radius-sides: join($-edges, $-corners) !default;
 $-radius-sizes: 0, 1px, 2px, 3px, 4px, 6px, 8px !default;
 $-radius-size-df: 4px !default;
 
@@ -19,15 +19,16 @@ $-radius-size-df: 4px !default;
 // classes
 @if include(utils) {
     // prettier-ignore
-    .__bdr { @include border-radius(); }
+    .__bdr { @include border-radius(all, $-radius-size-df); }
 
-    @each $side in $-corner-sides {
+    @each $side in $-radius-sides {
         $class: side-abbr($side);
+
         .__bdr-#{$class} {
-            @include border-radius($side);
+            @include border-radius($side, $-radius-size-df);
         }
 
-        @each $radius in $-corner-radiuses {
+        @each $radius in $-radius-sizes {
             $number: unitless($radius);
             .__bdr-#{$class}-#{$number} {
                 @include border-radius($side, $radius);

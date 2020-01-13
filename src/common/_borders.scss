@@ -52,41 +52,44 @@ $-border-color-df: color(neutral, 7) !default;
         @if $side == all { border: $border; }
 
         @each $edge in $-edges {
-            @if side-match($side, $edge) {
-                border-#{$side}: $border;
-            }
+            // prettier-ignore
+            @if side-match($edge, $side) { border-#{$side}: $border; }
         }
     }
 }
 
 // classes
 
-// prettier-ignore
 @if include(utils) {
-    .__bd { @include border(); }
+    // prettier-ignore
+    .__bd { @include border(all); }
 
     // all
     @each $width in $-border-widths {
-        .__bd-#{$width} { @include border($width) }
+        // prettier-ignore
+        .__bd-#{$width} { @include border(all, $width); }
     }
     // styles
     @each $style, $class in $-border-styles {
-        .__bds-#{$class} { @include border-style($style); }
+        // prettier-ignore
+        .__bds-#{$class} { @include border-style(all, $style); }
     }
 
     @each $side in $-border-sides {
-        .__bd-#{$side} { @include border($-border-width-df, $side); }
+        // prettier-ignore
+        .__bd-#{$side} { @include border($side); }
 
         @each $width in $-border-widths {
-            $class: strip-unit($width);
-            .__bd-#{$side}-#{$class} { @include border($side, $width) }
+            .__bd-#{$side}-#{strip-unit($width)} {
+                @include border($side, $width);
+            }
         }
 
         // styles
         @each $style, $class in $-border-styles {
-            .__bds-#{$side}-#{$class} { @include border-style($style); }
+            .__bds-#{$side}-#{$class} {
+                @include border-style($style);
+            }
         }
     }
-
-
 }
