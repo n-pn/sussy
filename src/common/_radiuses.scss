@@ -1,5 +1,5 @@
 // configs
-$-radius-sides: join($-edges, $-corners) !default;
+$-radius-sides: join($-side-edges, $-side-corners) !default;
 $-radius-sizes: (
     0: 0,
     1: 2px,
@@ -14,7 +14,7 @@ $-radius-size-df: 4px !default;
     @if $side == all {
         border-radius: $radius;
     } @else {
-        @each $corner in $-corners {
+        @each $corner in $-side-corners {
             @if side-match($corner, $side) {
                 border-#{$corner}-radius: $radius;
             }

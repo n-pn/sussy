@@ -1,6 +1,6 @@
 /// configs
 $-gutter-sizes: (0, 1bs, 2bs, 3bs, 4bs, 5bs, 6bs) !default;
-$-gutter-sides: join($-edges, $-flanks) !default;
+$-gutter-sides: join($-side-edges, $-side-flanks) !default;
 
 // helpers
 @mixin margin($size, $side: all, $screen: null) {
@@ -9,7 +9,7 @@ $-gutter-sides: join($-edges, $-flanks) !default;
     @include screen-min($screen) {
         // prettier-ignore
         @if $side == all { margin: $gutter; }
-        @each $edge in $-edges {
+        @each $edge in $-side-edges {
             // prettier-ignore
             @if side-match($side, $edge) { margin-#{$edge}: $gutter; }
         }
@@ -24,7 +24,7 @@ $-gutter-sides: join($-edges, $-flanks) !default;
         @include screen-min($screen) { padding: $gutter; }
     }
 
-    @each $edge in $-edges {
+    @each $edge in $-side-edges {
         @if side-match($side, $edge) {
             // prettier-ignore
             @include screen-min($screen) { padding-#{$edge}: $gutter; }

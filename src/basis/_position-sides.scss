@@ -1,6 +1,6 @@
-$-edges: top, bottom, left, right;
-$-flanks: top-bottom, left-right;
-$-corners: top-left, top-right, bottom-left, bottom-right;
+$-side-edges: top, bottom, left, right;
+$-side-flanks: top-bottom, left-right;
+$-side-corners: top-left, top-right, bottom-left, bottom-right;
 
 $-side-abbrs: (
     top: t,
@@ -34,7 +34,7 @@ $-side-abbrs: (
     @if $side1 == top-bottom { @return $side2 == top or $side2 == bottom; }
     @if $side1 == left-right { @return $side2 == left or $side2 == right; }
 
-    // @if index($-edges, $side1) { @return side-match($side2, $size1); }
+    // @if index($-side-edges, $side1) { @return side-match($side2, $size1); }
     @return false;
 }
 
