@@ -11,7 +11,7 @@
     font-weight: 700;
     margin: 0 0 0.5em 0;
 
-    @include screen-width-min(pl) {
+    @include screen-min(sm) {
       font-size: 4em;
     }
   }

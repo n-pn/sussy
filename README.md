@@ -70,7 +70,7 @@ $-screen-names: ps, pm, pl, ts, tm, tl, cs, cm, cl;
 
 @function screen-size($name) {} // $name can also be a custom number
 
-@mixin screen-width-min($min: ts) {} // media screen + min-width
+@mixin screen-min($min: ts) {} // media screen + min-width
 @mixin screen-width-max($max: cs) {}// media screen + max-width
 @mixin screen-width-range($min, $max) {}
 @mixin screen-height-min($min: ts) {} // media screen + min-height
