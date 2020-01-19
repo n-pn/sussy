@@ -1,0 +1,22 @@
+@import 'typography/blockquotes';
+@import 'typography/codes';
+@import 'typography/headings';
+@import 'typography/links';
+@import 'typography/lists';
+@import 'typography/rulers';
+@import 'typography/tables';
+@import 'typography/texts';
+
+.m-typo,
+article {
+    > * + * {
+        margin-top: 1rem;
+    }
+}
+
+ul:not([class]),
+li {
+    > * + * {
+        margin-top: 0.5rem;
+    }
+}

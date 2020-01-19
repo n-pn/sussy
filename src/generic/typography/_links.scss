@@ -1,0 +1,28 @@
+/// links
+
+a[class] {
+    text-decoration: none;
+}
+
+$-link-color: color(primary, 7) !default;
+
+a:not([class]) {
+    color: $-link-color;
+    text-decoration: none;
+    background-size: 100% 2px;
+    padding: 4px 0;
+    margin: -4px 0;
+    // line-height: 1.5;
+    // padding: 0 2px;
+    // text-decoration-skip-ink: auto;
+
+    // @include border(top, 2px, $color: transparent);
+    // @include border(bottom, 2px, $color);
+    // transition: all 0.1s ease-in-out;
+
+    @include hover {
+        color: #fff;
+        // border-color: $color;
+        background-color: $-link-color;
+    }
+}

@@ -1,7 +1,7 @@
 const path = require('path')
 const sass = require('node-sass')
 
-const prepend_content = '@import "helpers";\n'
+const prepend_content = '@import "essence";\n'
 
 module.exports = function(dir = __dirname) {
     return {

@@ -1,0 +1,68 @@
+/// lists
+
+ol[class],
+ul[class] {
+    padding: 0;
+    list-style: none;
+}
+
+ul {
+    list-style-type: disc;
+
+    > ul {
+        list-style-type: square;
+        > ul {
+            list-style-type: circle;
+        }
+    }
+}
+
+li::marker {
+    color: color(primary, 7);
+}
+
+ol,
+ul {
+    padding: 0;
+    padding-left: 1rem;
+    margin-bottom: 0;
+    // ol,
+    // ul {
+    //     margin-bottom: 0;
+    // }
+}
+
+ol {
+    counter-reset: li;
+}
+
+ul > li:before {
+    font-size: 1.3em;
+}
+
+li {
+    // display: block;
+    // margin: 0;
+    padding: 0;
+    // padding-left: 0.25rem;
+}
+
+li > p:first-child {
+    + ul,
+    + ol {
+        margin-top: 0;
+    }
+}
+
+dl {
+    display: block;
+}
+
+dt {
+    // font-weight: bold;
+    @include color(primary, 6);
+}
+
+dd {
+    margin-left: 1rem;
+}

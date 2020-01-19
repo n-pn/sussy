@@ -23,11 +23,10 @@ $-base-cell: 0.25rem !default;
 
 <!-- prettier-ignore -->
 ```scss
-// color with no tone: none, white, black,
-// color with tones: gray, red, orange, yellow, green, teal, blue, indigo, purple, pink
-// color tones: 1, 2, 3, 4, 5, 6, 7, 8, 9;
+// colors: gray, red, orange, yellow, green, teal, blue, indigo, purple, pink
+// tones: 1, 2, 3, 4, 5, 6, 7, 8, 9;
 
-$-color-pallete: (none, white, black, gray: (...), red: (...), ...);
+$-color-pallete: (gray: (...), red: (...), ...);
 
 $-color-mapping: (
     neutral: gray,
@@ -40,41 +39,59 @@ $-color-mapping: (
 @function color($name, $tone: 5) { }
 ```
 
-#### location util
+#### position sides
 
 <!-- prettier-ignore -->
 ```scss
-$-loc-edges: t, b, l, r;
-$-loc-sides: tb, lr;
-$-loc-corners: tl, tr, bl, br;
+$-side-edges: top, bottom, left, right;
+$-side-flanks: top-bottom, left-right;
+$-side-corners: top-left, top-right, bottom-left, bottom-right;
 
-@function loc-full($loc) {} // t => top, lr => left-right, etc.
-@function loc-akin($loc1, $loc2) {} // top ~= top-left, top-right, top-bottom...
+$-side-abbrs: (
+    top: t,
+    bottom: b,
+    left: l,
+    right: r,
+    top-left: tl,
+    top-right: tr,
+    top-bottom: tb,
+    bottom-left: bl,
+    bottom-right: br,
+    left-right: lr,
+);
+
+@function side-abbr($side) {} // t => top, lr => left-right, etc.
+@function side-match($side1, $side2) {} // top ~= top-left, top-right, top-bottom...
 ```
 
 #### media queries
 
 <!-- prettier-ignore -->
 ```scss
-$-screen-1: 320px !default; // small phone
-$-screen-2: 360px !default; // medium phone
-$-screen-3: 480px !default; // large phone
-$-screen-4: 640px !default; // small tablet
-$-screen-5: 768px !default; // medium tablet
-$-screen-6: 960px !default; // large tablet
-$-screen-7: 1200px !default; // small computer monitor
-$-screen-8: 1500px !default; // medium computer monitor
-$-screen-9: 1800px !default; // large computer monitor
 
-$-screen-names: ps, pm, pl, ts, tm, tl, cs, cm, cl;
+$-screen-xs: 320px !default;
+$-screen-sm: 560px !default;
+$-screen-md: 800px !default;
+$-screen-lg: 1040px !default;
+$-screen-xl: 1280px !default;
+
+$-screen-sizes: (
+    xs: $-screen-xs,
+    sm: $-screen-sm,
+    md: $-screen-md,
+    lg: $-screen-lg,
+    xl: $-screen-xl,
+) !default;
+
+$-screen-names: map-keys($-screen-sizes);
 
 @function screen-size($name) {} // $name can also be a custom number
 
-@mixin screen-min($min: ts) {} // media screen + min-width
-@mixin screen-width-max($max: cs) {}// media screen + max-width
-@mixin screen-width-range($min, $max) {}
-@mixin screen-height-min($min: ts) {} // media screen + min-height
-@mixin screen-height-max($max: cs) {} // media screen + max-height
+@mixin screen-min($min: sm) {} // media screen + min-width
+@mixin screen-max($max: lg) {}// media screen + max-width
+@mixin screen-range($min, $max) {}
+@mixin screen-height-min($min: sm) {} // media screen + min-height
+@mixin screen-height-max($max: lg) {} // media screen + max-height
 @mixin screen-height-range($min, $max) {}
 // NOTE: $min, $max == null meaning @content without media query
 ```
@@ -92,10 +109,9 @@ $-bgc-tone-df: 2 !default;
 
 @mixin bgcolor($name: $-bgc-name-df, $tone: $bgc-tone-df) {}
 
-// $name in (none, white, black, $-color-names)
-// $tone in (1..9), only apply on $-color-names
-.__bgc-#{$name} {}
-.__bgc-#{$name}-#{$tone} {}
+// $name in (none, white, black, primary, neutral, success, warning, harmful)
+// $tone in (1..9)
+.__bg-#{$name}-#{$tone} {}
 ```
 
 #### border-radiuses
@@ -104,16 +120,15 @@ $-bgc-tone-df: 2 !default;
 ```scss
 // configs
 $-raduius-sides: top, left, bottom, right, top-left, top-right, bottom-left, bottom-right !default;
-$-radius-sizes: 0, 1, 2, 4, 6, 8, 10, 12, 16, 24, 32 !default;
-$-radius-size-df: 4 !default;
+$-radius-sizes: 0, 1px, 2px, 3px, 4px, 6px, 8px, x !default;
+$-radius-size-df: 4px !default;
 
 // helpers
 @mixin border-radius($side: all, $radius: $-radius-size-df) {}
 
 // classes
-.__bdr { @include border-radius(); }
-.__bdr-#{$side} { @include border-radius($side); }
-.__bdr-#{$side}-#{$radius} { @include border-radius($side, $radius); }
+.__r-#{$side} { @include border-radius($side); }
+.__r-#{$side}-#{$radius} { @include border-radius($side, $radius); }
 ```
 
 #### borders

@@ -1,22 +1,29 @@
 <script>
-	import Nav from '../components/Nav.svelte';
+    import Nav from '../components/Nav.svelte'
 
-	export let segment;
+    export let segment
 </script>
 
-<style>
-	main {
-		position: relative;
-		max-width: 56em;
-		background-color: white;
-		padding: 2em;
-		margin: 0 auto;
-		box-sizing: border-box;
-	}
+<style lang="scss">
+    :global(#sapper) {
+        height: 100%;
+        padding-top: 3rem;
+    }
+
+    main {
+        position: relative;
+        max-width: 56em;
+        padding: 1em;
+        margin: 1rem auto;
+        box-sizing: border-box;
+        background: white;
+        @include border-radius();
+        @include box-shadow(2);
+    }
 </style>
 
-<Nav {segment}/>
+<Nav {segment} />
 
 <main>
-	<slot></slot>
+    <slot />
 </main>
