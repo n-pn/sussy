@@ -18,6 +18,19 @@ const mainFields = ['svelte', 'module', 'browser', 'main']
 
 const { preprocess } = require('./svelte.config')(__dirname)
 
+// postcss
+
+const autoprefixer = require('autoprefixer')
+const cssnano = require('cssnano')({ preset: 'default' })
+const purgecss = require('@fullhuman/postcss-purgecss')({
+    content: ['./src/**/*.html', './src/**/*.svelte'],
+    keyframes: true,
+    whitelistPatterns: [/svelte-/],
+    defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
+})
+
+// exports
+
 module.exports = {
     client: {
         entry: config.client.entry(),
@@ -49,8 +62,24 @@ module.exports = {
                             },
                         },
                         'css-loader',
-                        'sass-loader',
-                    ],
+                        !dev && {
+                            loader: 'postcss-loader',
+                            options: {
+                                parsers: 'postcss',
+                                // exec: true,
+                                plugins: [autoprefixer, cssnano, purgecss],
+                            },
+                        },
+                        {
+                            loader: 'sass-loader',
+                            options: {
+                                // sassOptions: {
+                                //     outputStyle: 'compact',
+                                // },
+                                sourceMap: true,
+                            },
+                        },
+                    ].filter(Boolean),
                 },
             ],
         },
