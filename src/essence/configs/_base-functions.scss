@@ -15,8 +15,9 @@ $-base-spacing: 0.25rem !default;
     @if unit($size) == px { @return ($size / $-base-size) * 1rem; }
     @if unit($size) == bs { @return strip-unit($size) * $-base-spacing; }
     @if unit($size) == rem { @return $size; }
+    @if unit($size) == em { @return $size; }
 
-    @error "unsupported unit '#{$unit}'";
+    @error "unsupported unit '#{$size}'";
 }
 
 // @debug rem(1);

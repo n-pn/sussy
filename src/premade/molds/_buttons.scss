@@ -5,21 +5,21 @@ $-mod-button: true !default;
 $-button-sizes: tiny, small, medium, large, huge !default;
 $-button-styles: text, line, solid, raise !default;
 
-$-button-default-size: medium !default;
-$-button-default-style: solid !default;
+$-button-size-df: medium !default;
+$-button-style-df: solid !default;
 
 // mixins
 
-@mixin -button-size($size, $font-size) {
-    @include height($size);
-    @include font-size($font-size);
-
-    &._icon {
-        width: $size;
-    }
+@mixin button-sizing($height, $font-size) {
+    $padding: ($height - $font-size) / 2;
+    font-size: $font-size;
+    line-height: $font-size;
 }
 
-@mixin -button-fill-color($color) {
+@mixin button-variant($style, $color) {
+}
+
+@mixin button-solid-color($color) {
     @include color(white);
     @include bgcolor($color, 5);
 
@@ -28,7 +28,7 @@ $-button-default-style: solid !default;
     }
 }
 
-@mixin -button-line-color($color) {
+@mixin button-line-color($color) {
     background: transparent;
     @include color($color, 6);
     @include border-color($color, 4);
@@ -38,7 +38,7 @@ $-button-default-style: solid !default;
     }
 }
 
-@mixin button-color-text($color) {
+@mixin button-text-color($color) {
     background: transparent;
     @include color($color, 7);
     @include hover() {
@@ -48,97 +48,82 @@ $-button-default-style: solid !default;
 
 @mixin button-color($color: neutral) {
     &,
-    &._fill,
-    &._rise {
-        @include -button-fill-color($color);
+    &._solid,
+    &._raise {
+        @include button-solid-color($color);
     }
 
     &._line {
-        @include -button-line-color($color);
+        @include button-line-color($color);
     }
 
     &._text {
-        @include button-color-text($color);
+        @include button-text-color($color);
     }
 }
 
-@if include(objects) {
-    .--button {
-        display: inline-block;
-        text-transform: uppercase;
-        font-weight: 500;
-        @include border-radius(4);
-        @include border(transparent, 1px);
-    }
-}
+.m-button {
+    display: inline-block;
+    text-transform: uppercase;
+    font-weight: 500;
+    @include border-radius();
+    @include border(all, 1px, transparent);
 
-// button sizes
+    // button sizes
 
-.--button {
     &._tiny {
-        @include -button-size(1.25rem, xs);
+        @include button-sizing(1.25rem, font-size(xs));
     }
 
     &._small {
-        @include -button-size(1.5rem, sx);
+        @include button-sizing(1.5rem, font-size(xs));
     }
 
     &,
     &._medium {
-        @include -button-size(2rem, sm);
+        @include button-sizing(2rem, font-size(md));
     }
 
     &._large {
-        @include -button-size(2.5rem, md);
+        @include button-sizing(2.5rem, font-size(md));
     }
 
     &._huge {
-        @include -button-size(3rem, lg);
+        @include button-sizing(3rem, font-size(lg));
     }
-}
 
-// button widths
-
-.--button {
-    &,
-    &._normal {
-        padding: 0 1em;
-    }
+    // button widths
 
     &._narrow {
-        padding: 0 0.5em;
+        @include padding(0.5em, left-right);
     }
 
     &._widely {
-        padding: 0 1.5em;
+        @include padding(1.5em, left-right);
     }
 
     &._block {
         display: block;
         width: 100%;
     }
-}
 
-// button styles
+    // button styles
 
-.--button {
-    &._icon {
+    &._cicle {
         @include border-radius(9999px);
         padding: 0;
     }
 
-    &._rise {
-        // @include shadow(md);
-        box-shadow: 0 3px 6px rgba(#000, 0.1), 0 1px 2px rgba(#000, 0.2);
+    &._raise {
+        @include box-shadow(2);
     }
 
-    &,
-    &._default {
+    & {
         @include button-color(neutral);
 
         &,
-        &._fill,
-        &._rise {
+        &._solid,
+        &._raise {
             @include color(neutral, 7);
             @include bgcolor(neutral, 2);
             @include hover {
@@ -148,63 +133,17 @@ $-button-default-style: solid !default;
         }
     }
 
-    &._primary {
-        @include button-color(primary);
-    }
-
-    &._success {
-        @include button-color(success);
-    }
-
-    &._harmful {
-        @include button-color(harmful);
-    }
-
-    &._gray {
-        @include button-color(gray);
-    }
-
-    &._red {
-        @include button-color(red);
-    }
-
-    &._orange {
-        @include button-color(orange);
-    }
-
-    &._yellow {
-        @include button-color(yellow);
-    }
-
-    &._green {
-        @include button-color(green);
-    }
-
-    &._teal {
-        @include button-color(teal);
-    }
-
-    &._blue {
-        @include button-color(blue);
-    }
-
-    &._indigo {
-        @include button-color(indigo);
-    }
-
-    &._purple {
-        @include button-color(purple);
-    }
-
-    &._pink {
-        @include button-color(pink);
+    @each $type, $name in $-color-mapping {
+        &._#{$type} {
+            @include button-color($name);
+        }
     }
 
     &._disable,
     &[disabled] {
+        box-shadow: none;
         @include color(neutral, 5);
         @include bgcolor(neutral, 2);
-        box-shadow: none;
         @include hover {
             cursor: text;
             @include color(neutral, 5);
