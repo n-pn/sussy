@@ -12,9 +12,9 @@
 
     main {
         position: relative;
-        max-width: 56em;
-        padding: 1em;
-        margin: 1rem auto;
+        max-width: 40rem;
+        padding: 1rem 1.25rem;
+        margin: 2rem auto;
         box-sizing: border-box;
         background: white;
         @include border-radius();
