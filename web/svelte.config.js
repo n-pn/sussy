@@ -19,6 +19,7 @@ module.exports = {
                         includePaths: [
                             path.dirname(filename),
                             path.join(__dirname, 'node_modules'),
+                            path.resolve(__dirname, 'static'),
                             path.resolve(__dirname, '../src'),
                         ],
                         outFile: 'x',
