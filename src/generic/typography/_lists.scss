@@ -1,7 +1,7 @@
 /// lists
 
-ol,
-ul {
+ul,
+ol {
     margin: 0;
     padding: 0;
     padding-left: 1rem;
@@ -32,21 +32,17 @@ $-li-marker-color: color(neutral, 6);
 li {
     margin: 0;
     padding: 0;
-
-    &::marker {
-        color: $-li-marker-color;
-    }
+    &::marker { color: $-li-marker-color; }
 
     li + & { margin-top: 0.5rem; }
-    ul[class] & { margin-top: 0; }
-    li & { margin-top: 0; }
-}
-
-dl {
-    display: block;
+    ul[class] &, li & { margin-top: 0; }
 }
 
 $-dt-color: color(neutral, 6) !default;
+
+// dl {
+//     display: block;
+// }
 
 // prettier-ignore
 dt {

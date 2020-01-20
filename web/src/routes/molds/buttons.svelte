@@ -13,7 +13,7 @@
         'purple',
         'pink',
     ]
-    const styles = ['text', 'line', 'fill', 'rise']
+    const styles = ['text', 'line', 'solid', 'raise']
     const sizes = ['tiny', 'small', 'medium', 'large', 'huge']
     // your script goes here
 </script>
@@ -66,7 +66,7 @@
     <h2>Button styles</h2>
 
     <div class="button-list">
-        <button class="m-button _icon">
+        <button class="m-button _cicle">
             <i class="m-icon _feather" />
         </button>
         {#each styles as style}

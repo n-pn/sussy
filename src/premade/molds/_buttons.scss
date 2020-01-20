@@ -11,7 +11,10 @@ $-button-style-df: solid !default;
 // mixins
 
 @mixin button-sizing($height, $font-size) {
-    $padding: ($height - $font-size) / 2;
+    $padding: ($height - $font-size) / 2 - rem(1px);
+
+    height: $height;
+    padding: $padding;
     font-size: $font-size;
     line-height: $font-size;
 }
@@ -20,29 +23,40 @@ $-button-style-df: solid !default;
 }
 
 @mixin button-solid-color($color) {
-    @include color(white);
-    @include bgcolor($color, 5);
+    $bgcolor: color($color, 5);
+    $bghover: color($color, 4);
+
+    color: #fff;
+    background-color: $bgcolor;
 
     @include hover() {
-        @include bgcolor($color, 4);
+        background-color: $bghover;
     }
 }
 
-@mixin button-line-color($color) {
+@mixin button-line-color($name) {
+    $color: color($name, 6);
+    $hover: color($name, 1);
+    $bdcolor: color($name, 3);
+
     background: transparent;
-    @include color($color, 6);
-    @include border-color($color, 4);
+    color: $color;
+    @include border-color($color: $bdcolor);
 
     @include hover() {
-        @include bgcolor($color, 2);
+        background-color: $hover;
     }
 }
 
-@mixin button-text-color($color) {
+@mixin button-text-color($name) {
+    $color: color($name, 6);
+    $hover: color($name, 1);
+
     background: transparent;
-    @include color($color, 7);
+    color: $color;
+
     @include hover() {
-        @include bgcolor($color, 2);
+        background-color: $hover;
     }
 }
 
@@ -64,8 +78,9 @@ $-button-style-df: solid !default;
 
 .m-button {
     display: inline-block;
-    text-transform: uppercase;
     font-weight: 500;
+    text-transform: uppercase;
+
     @include border-radius();
     @include border(all, 1px, transparent);
 
@@ -81,7 +96,7 @@ $-button-style-df: solid !default;
 
     &,
     &._medium {
-        @include button-sizing(2rem, font-size(md));
+        @include button-sizing(2rem, font-size(sm));
     }
 
     &._large {
@@ -95,7 +110,7 @@ $-button-style-df: solid !default;
     // button widths
 
     &._narrow {
-        @include padding(0.5em, left-right);
+        @include padding(0.25em, left-right);
     }
 
     &._widely {
@@ -133,19 +148,29 @@ $-button-style-df: solid !default;
         }
     }
 
-    @each $type, $name in $-color-mapping {
+    @each $type in map-keys($-color-mapping) {
         &._#{$type} {
-            @include button-color($name);
+            @include button-color($type);
+        }
+    }
+
+    @each $type in map-keys($-color-palette) {
+        &._#{$type} {
+            @include button-color($type);
         }
     }
 
     &._disable,
     &[disabled] {
-        box-shadow: none;
-        @include color(neutral, 5);
-        @include bgcolor(neutral, 2);
+        @include color(neutral, 4);
+
         @include hover {
             cursor: text;
+            @include bgcolor(none, 5);
+        }
+
+        &._solid,
+        &._raise {
             @include color(neutral, 5);
             @include bgcolor(neutral, 2);
         }
