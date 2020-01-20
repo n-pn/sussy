@@ -51,15 +51,17 @@
 <nav>
     <ul>
         <li>
-            <a class:selected={segment === undefined} href=".">home</a>
+            <a class:selected={segment === undefined} href=".">Home</a>
         </li>
         <li>
             <a class:selected={segment === 'typography'} href="typography">
-                typography
+                Typography
             </a>
         </li>
         <li>
-            <a class:selected={segment === 'about'} href="about">about</a>
+            <a class:selected={segment === 'buttons'} href="molds/buttons">
+                Buttons
+            </a>
         </li>
 
         <!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
@@ -69,7 +71,7 @@
                 rel="prefetch"
                 class:selected={segment === 'examples'}
                 href="examples">
-                examples
+                Examples
             </a>
         </li>
     </ul>

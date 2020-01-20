@@ -53,7 +53,7 @@
 
     <hr />
 
-    <h2>sizes</h2>
+    <h2>Sizes</h2>
 
     <div class="button-list">
         {#each sizes as size}
@@ -66,7 +66,7 @@
     <h2>Widths</h2>
 
     <div class="button-list">
-        <XButton mods="_narrow _line _raise" text="Narrow button" />
+        <XButton mods="_narrow _line" text="Narrow button" />
         <XButton mods="_normal _success _solid" text="Normal button" />
         <XButton mods="_widely _disable _raise _pill" text="Widely button" />
     </div>
