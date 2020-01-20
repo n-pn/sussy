@@ -100,11 +100,11 @@
     <p>
         <strong>
             Lorem ipsum
-            <a href="/">dolor</a>
+            <a href=".">dolor</a>
             <em>sit amet</em>
             , consectetur
         </strong>
-        <a href="basic/typography">
+        <a href="typography">
             adipiscing
             <code>elit</code>
         </a>

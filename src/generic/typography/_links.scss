@@ -4,25 +4,34 @@ a[class] {
     text-decoration: none;
 }
 
-$-link-color: color(primary, 7) !default;
+$-link-internal: color(primary, 5) !default;
+$-link-external: color(teal, 6) !default;
+$-link-external-visited: color(purple, 7) !default;
 
 a:not([class]) {
-    color: $-link-color;
+    color: $-link-internal;
     text-decoration: none;
-    background-size: 100% 2px;
-    padding: 3px;
-    margin: -3px;
-    // line-height: 1.5;
-    // padding: 0 2px;
     // text-decoration-skip-ink: auto;
-
-    // @include border(top, 2px, $color: transparent);
-    // @include border(bottom, 2px, $color);
+    padding: 2px 4px;
+    margin: -2px -4px;
+    font-weight: 500;
     // transition: all 0.1s ease-in-out;
+    @include border-radius();
 
     @include hover {
-        color: #fff;
-        // border-color: $color;
-        background-color: $-link-color;
+        color: lighten($-link-internal, 5%);
+        background-color: rgba($-link-internal, 0.15);
+    }
+
+    &[href*="//"] {
+        color: color(teal, 6);
+
+        &:visited {
+            color: $-link-external-visited;
+            @include hover {
+                color: lighten($-link-external-visited, 5%);
+                background-color: rgba($-link-external-visited, 0.15);
+            }
+        }
     }
 }
