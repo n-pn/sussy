@@ -12,7 +12,7 @@
 
     main {
         position: relative;
-        max-width: 40rem;
+        max-width: 45rem;
         padding: 1rem 1.25rem;
         margin: 2rem auto;
         box-sizing: border-box;

@@ -15,7 +15,7 @@
     }
 
     ul {
-        width: 40rem;
+        width: 45rem;
         margin: 0 auto !important;
         display: flex;
         @include clearfix();
@@ -29,6 +29,9 @@
         padding: rem(3bs);
         display: block;
 
+        @include hover {
+            background-color: rgba(color(primary, 6), 0.1);
+        }
         &.selected {
             position: relative;
             display: inline-block;

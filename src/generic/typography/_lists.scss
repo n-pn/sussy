@@ -1,68 +1,59 @@
 /// lists
 
-ol[class],
+ol,
+ul {
+    margin: 0;
+    padding: 0;
+    padding-left: 1rem;
+}
+
 ul[class] {
     padding: 0;
     list-style: none;
 }
 
+// prettier-ignore
 ul {
     list-style-type: disc;
-
-    > ul {
-        list-style-type: square;
-        > ul {
-            list-style-type: circle;
-        }
-    }
+    ul & { list-style-type: square; }
+    ul ul & { list-style-type: circle; }
 }
 
-li::marker {
-    color: color(primary, 7);
-}
-
-ol,
-ul {
-    padding: 0;
-    padding-left: 1rem;
-    margin-bottom: 0;
-    // ol,
-    // ul {
-    //     margin-bottom: 0;
-    // }
-}
-
+// prettier-ignore
 ol {
-    counter-reset: li;
+    list-style-type: decimal;
+    ol & { list-style-type: lower-roman; }
+    ol ol & { list-style-type: lower-alpha; }
 }
 
-ul > li:before {
-    font-size: 1.3em;
-}
+$-li-marker-color: color(neutral, 6);
 
+// prettier-ignore
 li {
-    // display: block;
-    // margin: 0;
+    margin: 0;
     padding: 0;
-    // padding-left: 0.25rem;
-}
 
-li > p:first-child {
-    + ul,
-    + ol {
-        margin-top: 0;
-    }
+    &::marker { color: $-li-marker-color; }
+
+    li + & { margin-top: 0.5rem; }
+    ul[class] & { margin-top: 0; }
+    li & { margin-top: 0; }
 }
 
 dl {
     display: block;
 }
 
+$-dt-color: color(neutral, 6) !default;
+
+// prettier-ignore
 dt {
-    // font-weight: bold;
-    @include color(primary, 6);
+    color: $-dt-color;
+    & ~ dt { margin-top: 0.5rem; }
+    dt & { margin-top: 0; }
 }
 
 dd {
+    margin: 0;
     margin-left: 1rem;
 }

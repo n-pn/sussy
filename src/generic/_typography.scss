@@ -13,10 +13,3 @@ article {
         margin-top: 1rem;
     }
 }
-
-ul:not([class]),
-li {
-    > * + * {
-        margin-top: 0.5rem;
-    }
-}

@@ -19,7 +19,6 @@ $-h6-line-height: 1.5rem !default;
     margin: 0;
     font-size: $font-size;
     line-height: $line-height;
-    font-weight: 400;
 }
 
 h1 {
@@ -29,21 +28,25 @@ h1 {
 
 h2 {
     @include heading($-h2-font-size, $-h2-line-height);
-    // font-weight: 300;
+    font-weight: 400;
 }
 
 h3 {
     @include heading($-h3-font-size, $-h3-line-height);
+    font-weight: 500;
 }
 
 h4 {
     @include heading($-h4-font-size, $-h4-line-height);
+    font-weight: 600;
 }
 
 h5 {
     @include heading($-h5-font-size, $-h5-line-height);
+    font-weight: 700;
 }
 
 h6 {
     @include heading($-h6-font-size, $-h6-line-height);
+    font-weight: 900;
 }

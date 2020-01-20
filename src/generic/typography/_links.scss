@@ -20,17 +20,22 @@ a:not([class]) {
 
     @include hover {
         color: lighten($-link-internal, 5%);
-        background-color: rgba($-link-internal, 0.15);
+        background-color: rgba($-link-internal, 0.1);
     }
 
     &[href*="//"] {
         color: color(teal, 6);
 
+        @include hover {
+            color: lighten($-link-external, 5%);
+            background-color: rgba($-link-external, 0.1);
+        }
+
         &:visited {
             color: $-link-external-visited;
             @include hover {
                 color: lighten($-link-external-visited, 5%);
-                background-color: rgba($-link-external-visited, 0.15);
+                background-color: rgba($-link-external-visited, 0.1);
             }
         }
     }

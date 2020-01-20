@@ -51,45 +51,27 @@
 
     <article class="sample">
         <div class="column">
-            <h1>
-                Heading Level 1
-                <code>30px</code>
-            </h1>
+            <h1>Heading Level 1</h1>
         </div>
 
         <div class="column">
-            <h2>
-                Heading Level 2
-                <code>24px</code>
-            </h2>
+            <h2>Heading Level 2</h2>
         </div>
 
         <div class="column">
-            <h3>
-                Heading Level 3
-                <code>20px</code>
-            </h3>
+            <h3>Heading Level 3</h3>
         </div>
 
         <div class="column">
-            <h4>
-                Heading Level 4
-                <code>18px</code>
-            </h4>
+            <h4>Heading Level 4</h4>
         </div>
 
         <div class="column">
-            <h5>
-                Heading Level 5
-                <code>16px</code>
-            </h5>
+            <h5>Heading Level 5</h5>
         </div>
 
         <div class="column">
-            <h6>
-                Heading Level 6
-                <code>14px</code>
-            </h6>
+            <h6>Heading Level 6</h6>
         </div>
     </article>
 
@@ -265,39 +247,39 @@
 
     <h2>Lists</h2>
 
-    <div class="demo">
-        <div class="column _third">
-            <ul class="list">
-                <li>list item 1</li>
+    <div class="demo m-typo">
+        <div class="column _third u-mt-4">
+            <ul>
+                <li>unordered list item 1</li>
                 <li>
-                    list item 2
+                    unordered list item 2
                     <ul>
-                        <li>list item 2.1</li>
-                        <li>list item 2.2</li>
-                        <li>list item 2.3</li>
+                        <li>unordered list item 2.1</li>
+                        <li>unordered list item 2.2</li>
+                        <li>unordered list item 2.3</li>
                     </ul>
                 </li>
-                <li>list item 3</li>
+                <li>unordered list item 3</li>
             </ul>
         </div>
 
         <div class="column _third">
-            <ol class="list">
-                <li>list item 1</li>
+            <ol>
+                <li>ordered list item 1</li>
                 <li>
-                    list item 2
+                    orderedlist item 2
                     <ol>
-                        <li>list item 2.1</li>
-                        <li>list item 2.2</li>
-                        <li>list item 2.3</li>
+                        <li>ordered list item 2.1</li>
+                        <li>ordered list item 2.2</li>
+                        <li>ordered list item 2.3</li>
                     </ol>
                 </li>
-                <li>list item 3</li>
+                <li>ordered list item 3</li>
             </ol>
         </div>
 
         <div class="column _third">
-            <dl class="list">
+            <dl>
                 <dt>description list term 1</dt>
                 <dd>description list description 1</dd>
                 <dt>description list term 2</dt>
