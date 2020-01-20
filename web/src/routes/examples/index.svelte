@@ -13,7 +13,7 @@
 </script>
 
 <svelte:head>
-    <title>Examples</title>
+    <title>Examples - Molds</title>
 </svelte:head>
 
 <article>

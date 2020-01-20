@@ -54,6 +54,10 @@
     }
 </style>
 
+<svelte:head>
+    <title>Cheatsheet - Molds</title>
+</svelte:head>
+
 <div class="m-typo">
     <h1>Variables</h1>
 
