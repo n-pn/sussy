@@ -1,15 +1,15 @@
 /// blockquotes
 
-$blockquote-gutter: 0.75rem !default;
-$blockquote-color: color(neutral, 5) !default;
-$blockquote-border: 0.25rem !default;
-$blockquote-bgcolor: rgba($blockquote-color, 0.15) !default;
+$blockquote-gutter: rem(3bs) !default;
+$blockquote-color: color(neutral, 6) !default;
+$blockquote-border: rem(1bs) !default;
+$blockquote-bgcolor: rgba($blockquote-color, 0.05) !default;
 
 blockquote {
     padding: $blockquote-gutter;
+    color: $blockquote-color;
 
-    // @include corner(md);
-    // @include color(neutral, 7);
+    @include border-radius();
     @include border(
         left,
         $width: $blockquote-border,
@@ -18,6 +18,6 @@ blockquote {
     background-color: $blockquote-bgcolor;
 
     > * + * {
-        margin-top: 0.75rem;
+        margin-top: $blockquote-gutter;
     }
 }

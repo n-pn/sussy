@@ -16,7 +16,7 @@ const alias = {
 const extensions = ['.mjs', '.js', '.json', '.svelte', '.html']
 const mainFields = ['svelte', 'module', 'browser', 'main']
 
-const { preprocess } = require('./svelte.config')(__dirname)
+const { preprocess } = require('./svelte.config')
 
 // postcss
 

@@ -1,46 +1,49 @@
 // headings
-$heading-color: color(neutral, 6) !default;
+$heading-color: color(neutral, 9) !default;
 
-%heading {
+$-h1-font-size: font-size(x3) !default;
+$-h1-line-height: 2.25rem !default;
+$-h2-font-size: font-size(x2) !default;
+$-h2-line-height: 2rem !default;
+$-h3-font-size: font-size(x1) !default;
+$-h3-line-height: 1.75rem !default;
+$-h4-font-size: font-size(lg) !default;
+$-h4-line-height: 1.5rem !default;
+$-h5-font-size: font-size(md) !default;
+$-h5-line-height: 1.5rem !default;
+$-h6-font-size: font-size(sm) !default;
+$-h6-line-height: 1.5rem !default;
+
+@mixin heading($font-size, $line-height: 1.5rem) {
     color: $heading-color;
-    font-weight: normal;
-    // @include font-family(narrow);
+    margin: 0;
+    font-size: $font-size;
+    line-height: $line-height;
+    font-weight: 400;
 }
 
 h1 {
-    @extend %heading;
-    @include font-size(x3); // 1.875rem;
+    @include heading($-h1-font-size, $-h1-line-height);
     font-weight: 300;
-    line-height: 2rem;
 }
 
 h2 {
-    @extend %heading;
-    @include font-size(x2); // 1.5rem;
-    line-height: 2rem;
+    @include heading($-h2-font-size, $-h2-line-height);
     // font-weight: 300;
 }
 
 h3 {
-    @extend %heading;
-    @include font-size(xl); // 1.25rem;
-    // line-height: 1.5rem;
+    @include heading($-h3-font-size, $-h3-line-height);
 }
 
 h4 {
-    @extend %heading;
-    @include font-size(lg); // 1.125rem;
-    // line-height: 1.5rem;
+    @include heading($-h4-font-size, $-h4-line-height);
 }
 
 h5 {
-    @extend %heading;
-    @include font-size(md); // 1rem;
-    // line-height: 1.5;
+    @include heading($-h5-font-size, $-h5-line-height);
 }
 
 h6 {
-    @extend %heading;
-    @include font-size(sm); // 0.875rem;
-    // line-height: 1.5;
+    @include heading($-h6-font-size, $-h6-line-height);
 }
