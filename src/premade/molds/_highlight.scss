@@ -3,23 +3,23 @@
 // Ayu Mirage
 
 .hljs {
-    display: block;
-    overflow-x: auto;
-    padding: 0.5em;
-    color: #cbccc6;
-    background: #1f2430;
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #cbccc6;
+  background: #1f2430;
 }
 
 .hljs-comment,
 .hljs-quote {
-    color: #5c6773;
+  color: #5c6773;
 }
 
 // Green
 .hljs-keyword,
 .hljs-selector-tag,
 .hljs-addition {
-    color: #ffa759;
+  color: #ffa759;
 }
 
 // Cyan
@@ -29,7 +29,7 @@
 .hljs-literal,
 .hljs-doctag,
 .hljs-regexp {
-    color: #bae67e;
+  color: #bae67e;
 }
 
 // Blue
@@ -38,7 +38,7 @@
 .hljs-name,
 .hljs-selector-id,
 .hljs-selector-class {
-    color: #73d0ff;
+  color: #73d0ff;
 }
 
 // Yellow
@@ -48,7 +48,7 @@
 .hljs-template-variable,
 .hljs-class .hljs-title,
 .hljs-type {
-    color: #ffd580;
+  color: #ffd580;
 }
 
 // Orange
@@ -60,23 +60,23 @@
 .hljs-selector-attr,
 .hljs-selector-pseudo,
 .hljs-link {
-    color: #ffa759;
+  color: #ffa759;
 }
 
 // Red
 .hljs-built_in,
 .hljs-deletion {
-    color: #ff3333;
+  color: #ff3333;
 }
 
 .hljs-formula {
-    background: #073642;
+  background: #073642;
 }
 
 .hljs-emphasis {
-    font-style: italic;
+  font-style: italic;
 }
 
 .hljs-strong {
-    font-weight: bold;
+  font-weight: bold;
 }

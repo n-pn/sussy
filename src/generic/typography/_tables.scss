@@ -9,29 +9,29 @@ $table-capcolor: color(neutral, 5) !default;
 $table-thcolor: color(primary, 8) !default;
 
 table {
-    border-collapse: collapse;
+  border-collapse: collapse;
 }
 
 caption {
-    @include padding($table-padding, top-bottom);
-    color: $table-capcolor;
-    text-align: left;
-    caption-side: bottom;
+  @include padding($table-padding, top-bottom);
+  color: $table-capcolor;
+  text-align: left;
+  caption-side: bottom;
 }
 
 thead,
 tr:nth-child(even) {
-    background-color: $table-bgcolor;
+  background-color: $table-bgcolor;
 }
 
 th {
-    color: $table-thcolor;
-    text-align: inherit;
-    font-weight: normal;
+  color: $table-thcolor;
+  text-align: inherit;
+  font-weight: normal;
 }
 
 th,
 td {
-    padding: $table-padding $gutter;
-    @include border($table-bdcolor, 1px);
+  padding: $table-padding $gutter;
+  @include border($table-bdcolor, 1px);
 }

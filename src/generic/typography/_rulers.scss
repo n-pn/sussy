@@ -1,11 +1,11 @@
 // rulers
 
 hr {
-    @include color(neutral, 3);
-    background-color: currentColor;
-    border: 0;
+  @include color(neutral, 3);
+  background-color: currentColor;
+  border: 0;
 
-    &:not([size]) {
-        height: 1px;
-    }
+  &:not([size]) {
+    height: 1px;
+  }
 }

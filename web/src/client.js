@@ -3,5 +3,5 @@ import '../../src/generic.scss'
 import '../../src/premade.scss'
 
 sapper.start({
-    target: document.querySelector('#sapper'),
+  target: document.querySelector('#sapper'),
 })

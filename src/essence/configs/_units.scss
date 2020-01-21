@@ -2,7 +2,7 @@ $-base-size: 16px !default;
 $-base-spacing: 0.25rem !default;
 
 @function strip-unit($num) {
-    @return $num / ($num * 0 + 1);
+  @return $num / ($num * 0 + 1);
 }
 
 /// convert px, bs to rem

@@ -5,19 +5,19 @@
 // 3. Don't allow content to break outside
 
 pre {
-  display: block;
-  margin-top: 0; // 1
-  margin-bottom: 1rem; // 2
-  overflow: auto; // 3
-  @include font-size($code-font-size);
-  color: $pre-color;
+    display: block;
+    margin-top: 0; // 1
+    margin-bottom: 1rem; // 2
+    overflow: auto; // 3
+    @include font-size($code-font-size);
+    color: $pre-color;
 
-  // Account for some code outputs that place code tags in pre tags
-  code {
-    @include font-size(inherit);
-    color: inherit;
-    word-break: normal;
-  }
+    // Account for some code outputs that place code tags in pre tags
+    code {
+        @include font-size(inherit);
+        color: inherit;
+        word-break: normal;
+    }
 }
 
 // Forms
@@ -25,8 +25,8 @@ pre {
 // 1. Allow labels to use `margin` for spacing.
 
 label {
-  display: inline-block; // 1
-  margin-bottom: $label-margin-bottom;
+    display: inline-block; // 1
+    margin-bottom: $label-margin-bottom;
 }
 
 // Remove the default `border-radius` that macOS Chrome adds.
@@ -34,8 +34,8 @@ label {
 // Details at https://github.com/twbs/bootstrap/issues/24093
 
 button {
-  // stylelint-disable-next-line property-blacklist
-  border-radius: 0;
+    // stylelint-disable-next-line property-blacklist
+    border-radius: 0;
 }
 
 // Work around a Firefox/IE bug where the transparent `button` background
@@ -44,8 +44,8 @@ button {
 // Credit: https://github.com/suitcss/base/
 
 button:focus {
-  outline: 1px dotted;
-  outline: 5px auto -webkit-focus-ring-color;
+    outline: 1px dotted;
+    outline: 5px auto -webkit-focus-ring-color;
 }
 
 // 1. Remove the margin in Firefox and Safari
@@ -55,24 +55,24 @@ button,
 select,
 optgroup,
 textarea {
-  margin: 0;
-  font-family: inherit;
-  @include font-size(inherit);
-  line-height: inherit;
+    margin: 0;
+    font-family: inherit;
+    @include font-size(inherit);
+    line-height: inherit;
 }
 
 // Show the overflow in Edge
 
 button,
 input {
-  overflow: visible;
+    overflow: visible;
 }
 
 // Remove the inheritance of text transform in Firefox
 
 button,
 select {
-  text-transform: none;
+    text-transform: none;
 }
 
 // Remove the inheritance of word-wrap in Safari.
@@ -80,7 +80,7 @@ select {
 // Details at https://github.com/twbs/bootstrap/issues/24990
 
 select {
-  word-wrap: normal;
+    word-wrap: normal;
 }
 
 // Remove the dropdown arrow in Chrome from inputs built with datalists.
@@ -96,13 +96,13 @@ button,
 [type="button"], // 1
 [type="reset"],
 [type="submit"] {
-  -webkit-appearance: button; // 2
+    -webkit-appearance: button; // 2
 
-  @if $enable-pointer-cursor-for-buttons {
-    &:not(:disabled) {
-      cursor: pointer; // 3
+    @if $enable-pointer-cursor-for-buttons {
+        &:not(:disabled) {
+            cursor: pointer; // 3
+        }
     }
-  }
 }
 
 // Remove inner border and padding from Firefox, but don't restore the outline like Normalize.
@@ -125,20 +125,20 @@ button,
 // 3. Correct the text wrapping in Edge and IE.
 
 legend {
-  float: left; // 1
-  width: 100%;
-  padding: 0;
-  margin-bottom: $legend-margin-bottom;
-  @include font-size($legend-font-size);
-  font-weight: $legend-font-weight;
-  line-height: inherit;
-  color: inherit; // 2
-  white-space: normal; // 3
+    float: left; // 1
+    width: 100%;
+    padding: 0;
+    margin-bottom: $legend-margin-bottom;
+    @include font-size($legend-font-size);
+    font-weight: $legend-font-weight;
+    line-height: inherit;
+    color: inherit; // 2
+    white-space: normal; // 3
 }
 
 mark {
-  padding: $mark-padding;
-  background-color: $mark-bg;
+    padding: $mark-padding;
+    background-color: $mark-bg;
 }
 
 // 1. Correct the outline style in Safari.

@@ -1,3 +1,3 @@
 <svelte:head>
-    <title>Molds</title>
+  <title>Molds</title>
 </svelte:head>

@@ -3,19 +3,19 @@
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 :focus {
-    outline: none !important;
+  outline: none !important;
 }
 
 [tabindex='-1']:focus:not(:focus-visible) {
-    outline: 0 !important;
+  outline: 0 !important;
 }
 
 [hidden] {
-    display: none !important;
+  display: none !important;
 }
 
 /// html5
@@ -29,25 +29,25 @@ audio,
 iframe,
 embed,
 object {
-    display: block;
+  display: block;
 }
 
 template {
-    display: none;
+  display: none;
 }
 
 summary {
-    display: list-item;
-    cursor: pointer;
+  display: list-item;
+  cursor: pointer;
 }
 
 output {
-    display: inline-block;
+  display: inline-block;
 }
 
 button::-moz-focus-inner {
-    border: 0 !important;
-    outline: none !important;
+  border: 0 !important;
+  outline: none !important;
 }
 
 /* Remove default margin */
@@ -67,21 +67,21 @@ figcaption,
 blockquote,
 dl,
 dd {
-    margin: 0;
+  margin: 0;
 }
 
 button {
-    border: 0;
+  border: 0;
 }
 
 /// normalize
 
 progress {
-    vertical-align: baseline;
+  vertical-align: baseline;
 }
 
 label {
-    display: inline-block;
+  display: inline-block;
 }
 
 // button {
@@ -93,117 +93,117 @@ button,
 select,
 optgroup,
 textarea {
-    margin: 0;
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
 }
 
 button,
 input {
-    overflow: visible;
+  overflow: visible;
 }
 
 button,
 select {
-    text-transform: none;
+  text-transform: none;
 }
 
 select {
-    word-wrap: normal;
+  word-wrap: normal;
 }
 
 button,
 [type='button'],
 [type='reset'],
 [type='submit'] {
-    -webkit-appearance: button;
+  -webkit-appearance: button;
 
-    @include hover {
-        &:not(:disabled) {
-            cursor: pointer;
-        }
+  @include hover {
+    &:not(:disabled) {
+      cursor: pointer;
     }
+  }
 }
 
 input[type='date'],
 input[type='time'],
 input[type='datetime-local'],
 input[type='month'] {
-    -webkit-appearance: textfield;
+  -webkit-appearance: textfield;
 }
 
 textarea {
-    overflow: auto;
-    resize: vertical;
-    -webkit-appearance: textfield;
+  overflow: auto;
+  resize: vertical;
+  -webkit-appearance: textfield;
 }
 
 fieldset {
-    min-width: 0;
-    padding: 0;
-    margin: 0;
-    border: 0;
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
 }
 
 legend {
-    float: left;
-    width: 100%;
-    padding: 0;
-    margin-bottom: 1rem;
-    line-height: inherit;
-    color: inherit;
-    white-space: normal;
-    font-size: 1rem;
+  float: left;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 1rem;
+  line-height: inherit;
+  color: inherit;
+  white-space: normal;
+  font-size: 1rem;
 }
 
 [type='search'] {
-    outline-offset: -2px;
-    -webkit-appearance: textfield;
+  outline-offset: -2px;
+  -webkit-appearance: textfield;
 }
 
 ::-moz-focus-inner {
-    padding: 0;
-    border-style: none;
+  padding: 0;
+  border-style: none;
 }
 
 [list]::-webkit-calendar-picker-indicator {
-    display: none;
+  display: none;
 }
 
 ::-webkit-search-decoration {
-    -webkit-appearance: none;
+  -webkit-appearance: none;
 }
 
 ::-webkit-color-swatch-wrapper {
-    padding: 0;
+  padding: 0;
 }
 
 ::-webkit-file-upload-button {
-    font: inherit;
-    -webkit-appearance: button;
+  font: inherit;
+  -webkit-appearance: button;
 }
 
 ::-webkit-datetime-edit {
-    overflow: visible;
-    line-height: 0;
+  overflow: visible;
+  line-height: 0;
 }
 
 /// images
 
 svg,
 img {
-    overflow: hidden;
-    border-style: none;
-    vertical-align: middle;
+  overflow: hidden;
+  border-style: none;
+  vertical-align: middle;
 }
 
 img {
-    display: block;
-    max-width: 100%;
-    height: auto;
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 p > img {
-    display: inline-block;
+  display: inline-block;
 }

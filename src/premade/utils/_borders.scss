@@ -6,27 +6,27 @@ $-border-styles: ( none: n, inset: i, hidden: h, solid: s,
 // all
 
 .u-bd {
-    @include border(all);
+  @include border(all);
 }
 
 @each $width in $-border-widths {
-    // prettier-ignore
-    .u-bd-#{strip-unit($width)} { @include border(all, $width); }
+  // prettier-ignore
+  .u-bd-#{strip-unit($width)} { @include border(all, $width); }
 }
 // styles
 @each $style, $class in $-border-styles {
-    // prettier-ignore
-    .u-bd-#{$class} { @include border-style(all, $style); }
+  // prettier-ignore
+  .u-bd-#{$class} { @include border-style(all, $style); }
 }
 
 @each $side in $-border-sides {
-    $class: side-abbr($side);
-    // prettier-ignore
-    .u-bd-#{$class} { @include border($side); }
+  $class: side-abbr($side);
+  // prettier-ignore
+  .u-bd-#{$class} { @include border($side); }
 
-    @each $width in $-border-widths {
-        .u-bd-#{$class}-#{strip-unit($width)} {
-            @include border($side, $width);
-        }
+  @each $width in $-border-widths {
+    .u-bd-#{$class}-#{strip-unit($width)} {
+      @include border($side, $width);
     }
+  }
 }
